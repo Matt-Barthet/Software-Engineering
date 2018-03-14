@@ -7,6 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>game</name>
   <url>http://maven.apache.org</url>
+	
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -15,4 +16,19 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+	<repositories>
+		<repository>
+			<id>myMavenRepo.read</id>
+			<url> https://mymavenrepo.com/repo/5cgAuscriBIxwTUGtWYu/ </url>
+		</repository>
+	</repositories>
+	
+	<distributionManagement>
+		<repository>
+			<id>myMavenRepo.write</id>
+			<url>https://mymavenrepo.com/repo/kvL1WeCRFJkMqyvD8XFN/</url>
+		</repository>
+	</distributionManagement>
+	
 </project>
