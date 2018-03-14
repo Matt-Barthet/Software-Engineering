@@ -1,22 +1,28 @@
-package com.uom.game;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
+package com.uom.junit;
+ 
+import static org.junit.Assert.assertThat;
+ 
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.Ignore;
+import org.junit.rules.Timeout;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+import static org.uom.CoreMatchers.not;
+import static org.uom.CoreMatchers.is;
+ 
 /**
- * Unit test for simple App.
+ * Tests for {@link Math}.
+ *
+ * @author hmkcode@gmail.com (Hani HMK)
  */
-public class AppTest 
-    extends TestCase
-{
-    @RunWith(JUnit4.class)
-public class MathTest {
+@RunWith(JUnit4.class)
+public class AppTest {
  
    @Rule
    public Timeout globalTimeout = new Timeout(3000); // 3 seconds max per method tested
  
-  com.hmkcode.junit.Math math = new com.hmkcode.junit.Math();
+  com.uom.junit.Math math = new com.uom.junit.Math();
  
   @Test
   @Ignore
@@ -49,4 +55,5 @@ public class MathTest {
     public void testSubtract(){
        org.junit.Assert.assertTrue("failure - not equal", math.subtract(3, 2) == 1);
     }
+ 
 }

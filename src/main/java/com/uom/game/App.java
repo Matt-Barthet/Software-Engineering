@@ -1,9 +1,5 @@
 package com.uom.game;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
@@ -22,4 +18,6 @@ public class App
     }
     public double subtract(double x, double y){
       return x - y;  
+	}
 }
+
