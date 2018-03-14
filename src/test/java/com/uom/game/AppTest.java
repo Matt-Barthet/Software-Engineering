@@ -31,11 +31,11 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
-    {
+    public void testApp(){
         assertTrue( true );
     }
-	public void testSum(){
+	
+	public static Test testSum(){
 		double x = 1; double y = 1;
 		assertEquals(2,App.sum(x,y));
 	}
