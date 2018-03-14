@@ -37,7 +37,7 @@ public class AppTest
     }
 	public void testSum(){
 		double x = 1; double y = 1;
-		assertEquals(2,App.add(x,y));
+		assertEquals(2,App.sum(x,y));
 	}
 	
 }
