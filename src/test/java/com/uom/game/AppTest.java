@@ -1,59 +1,43 @@
-package com.uom.junit;
- 
-import static org.junit.Assert.assertThat;
- 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.Ignore;
-import org.junit.rules.Timeout;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-import static org.uom.CoreMatchers.not;
-import static org.uom.CoreMatchers.is;
- 
+package com.uom.game;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 /**
- * Tests for {@link Math}.
- *
- * @author hmkcode@gmail.com (Hani HMK)
+ * Unit test for simple App.
  */
-@RunWith(JUnit4.class)
-public class AppTest {
- 
-   @Rule
-   public Timeout globalTimeout = new Timeout(3000); // 3 seconds max per method tested
- 
-  com.uom.junit.Math math = new com.uom.junit.Math();
- 
-  @Test
-  @Ignore
-   public void testAssertNotNull() {
-      org.junit.Assert.assertNotNull("should not be null", math);
-  }
- 
-    @Test
-    public void testSum(){
-      org.junit.Assert.assertTrue("failure - not equal", math.sum(3, 2) == 5);
- 
-      //to test timeout
-      /*for (;;) {
-        }*/
+public class AppTest 
+    extends TestCase
+{
+    /**
+     * Create the test case
+     *
+     * @param testName name of the test case
+     */
+    public AppTest( String testName )
+    {
+        super( testName );
     }
- 
-    @Test
-    public void testMultiply(){
-       org.junit.Assert.assertTrue("failure - not equal", math.multiply(3, 2) == 6);
+
+    /**
+     * @return the suite of tests being tested
+     */
+    public static Test suite()
+    {
+        return new TestSuite( AppTest.class );
     }
- 
-    @Test
-    public void testDivide(){
-      double x = 3,y = 2;
-      assertThat("failure - can't divide by 0",y, is(not(0.0)));
-      org.junit.Assert.assertTrue("failure - not equal", math.divide(x, y) == 1.5);
+
+    /**
+     * Rigourous Test :-)
+     */
+    public void testApp()
+    {
+        assertTrue( true );
     }
- 
-    @Test
-    public void testSubtract(){
-       org.junit.Assert.assertTrue("failure - not equal", math.subtract(3, 2) == 1);
-    }
- 
+	public void testSum(){
+		double x = 1; double y = 1;
+		assertEquals(2,App.add(x,y));
+	}
+	
 }
