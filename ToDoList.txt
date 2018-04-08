@@ -1,0 +1,11 @@
+TODO:
+Main game loop
+Map
+Players
+Html
+Console input (text)
+Win/Death Conditions
+
+INPROGRESS:
+
+DONE:
