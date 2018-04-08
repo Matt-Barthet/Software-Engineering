@@ -1,11 +1,16 @@
-TODO:
+The more unit tests test the code the more it is covered with emma so unit tests should be done with each task.
+
+ToDo:
+
 Main game loop
-Map
+Game Init
 Players
 Html
 Console input (text)
 Win/Death Conditions
 
 INPROGRESS:
+Map
+Tile Functions
 
 DONE:
