@@ -3,11 +3,11 @@ The more unit tests test the code the more it is covered with emma so unit tests
 ToDo:
 Main game loop
 Game Init
-Players
 Html
 Win/Death Conditions
 
 INPROGRESS:
+Players
 Tile Functions
 
 DONE:
