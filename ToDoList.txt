@@ -4,12 +4,12 @@ Testing feature on sourcetree
 ToDo:
 Main game loop
 Game Init
-Html
 Win/Death Conditions
 
 INPROGRESS:
 Players
 Tile Functions
+HTML
 
 DONE:
 Map
