@@ -1,10 +1,10 @@
 public class WinningTile extends Tile {
 	//Tile constructor
-	public WinningTile(String color, int x ,int y){
-		super(color,x,y);
+	public WinningTile(int x ,int y){
+		super(x,y);
 	}
 	//Tile action goes here
-	static boolean TileAction(String color , int x ,int y,Tile t){
+	static boolean TileAction(int x ,int y,Tile t){
 		return false;
 	}
 }

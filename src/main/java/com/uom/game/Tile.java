@@ -1,11 +1,9 @@
 public abstract class Tile {
 	private int x;
 	private int y;
-	private String color;
 	
 	//Tile constructor
-	public Tile(String color, int x ,int y){
-		this.color = color;
+	public Tile( int x ,int y){
 		this.x = x;
 		this.y = y;
 	}
@@ -17,12 +15,8 @@ public abstract class Tile {
 	public int getY(){
 		return y;
 	}
-	//returns the color of the tile
-	public String getColor(){
-		return color;
-	}
 	//Maybe change return type of polymorphed function
-	static boolean TileAction(String color , int x ,int y,Tile tile){
-		return tile.TileAction(color ,x ,y,tile);
+	static boolean TileAction( int x ,int y,Tile tile){
+		return tile.TileAction(x ,y,tile);
 	}
 }
