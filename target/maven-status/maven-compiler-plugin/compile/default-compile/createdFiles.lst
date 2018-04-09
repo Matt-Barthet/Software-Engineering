@@ -1,1 +1,11 @@
+com/uom/game/Map.class
+com/uom/game/Tile.class
 com/uom/game/App.class
+com/uom/game/WinningTile.class
+com/uom/game/Main.class
+com/uom/game/WaterTile.class
+com/uom/game/GreyTile.class
+com/uom/game/Player.class
+com/uom/game/GrassTile.class
+com/uom/game/Game.class
+com/uom/game/PlayerTile.class

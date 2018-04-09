@@ -1,3 +1,5 @@
+package com.uom.game;
+
 public abstract class Tile {
 	private int x;
 	private int y;

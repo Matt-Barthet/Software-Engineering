@@ -1,3 +1,5 @@
+package com.uom.game;
+
 import java.util.Random;
 
 public class Map {

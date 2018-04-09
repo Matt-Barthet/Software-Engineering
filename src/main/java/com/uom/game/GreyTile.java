@@ -1,3 +1,5 @@
+package com.uom.game;
+
 public class GreyTile extends Tile {
 	//Tile constructor
 	public GreyTile(int x ,int y){
