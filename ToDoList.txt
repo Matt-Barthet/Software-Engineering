@@ -4,13 +4,16 @@ Testing feature on sourcetree
 ToDo:
 Main game loop
 Game Init
-Win/Death Conditions
+Death condition
+players need to stop going out of map
+save players spawn point
+turns are after each other (change to waiting for all players to do a turn)
 
 INPROGRESS:
-Players
-Tile Functions
 HTML
 
 DONE:
+Player movement
+Win Condition
 Map
 Console input (text)

@@ -4,6 +4,7 @@ public class Map {
 	//Change to private later
 	public Tile[][] tile;
 	private int k = 0;
+	private int n ;
 	private GrassTile grass[];
 	private WaterTile water[];
 	private WinningTile win;
@@ -12,6 +13,7 @@ public class Map {
 	//Create a map with n*n amount of tiles
 	//This will have to randomly generate the type of tiles
 	public Map(int n){
+		this.n = n;
 		//Create the tiles and set them 
 		tile = new Tile[n][n];
 		grass = new GrassTile[n*n];
@@ -37,6 +39,9 @@ public class Map {
 		int y1 = rand.nextInt(n) + 0;
 		win  = new WinningTile(x1,y1);
 		setTile(win,win.getX(),win.getY());
+	}
+	public int returnTileAmount(){
+		return n;
 	}
 	//Sets the type of tile at the certain position
 	public void setTile(Tile tile,int x,int y){
