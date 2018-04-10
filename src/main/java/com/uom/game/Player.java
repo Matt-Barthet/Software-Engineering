@@ -1,17 +1,20 @@
 //Player Objecy
 public class Player{
-	public int x ,y ,n;
+	private int x ,y ,n;
+	public int temp_x , temp_y;
 	//Player constructor sets the number of the player and his position
 	public Player(int n,int x,int y){
 		this.n = n;
 		this.x = x;
 		this.y = y;
+		this.temp_x = x;
+		this.temp_y = y;
 	}
-	public void setPX(int x){
-		this.x = x ;
+	public int getPTX(){
+		 return temp_x;
 	}
-	public void setPY(int y){
-		this.y = y;
+	public int getPTY(){
+		return temp_y;
 	}
 	//retrieves x coordinate of a player
 	public int getPX(){
@@ -39,4 +42,10 @@ public class Player{
 			default : break;
 		}
 	}
+	//Returns player to the original position
+	public void moveOriginal(){
+		x = temp_x;
+		y = temp_y;
+	}
+	
 }

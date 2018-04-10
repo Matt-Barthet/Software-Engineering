@@ -26,6 +26,9 @@ public class Game {
 				char direction = reader.next().charAt(0);
 				player[i].move(player[i],direction);
 				System.out.println("Player , "+player[i].getPN()+" At X "+player[i].getPX()+ " and Y : "+player[i].getPY());
+				if(map.getTile(player[i].getPX() ,player[i].getPY()) instanceof WaterTile){
+					player[i].moveOriginal();
+				} 
 				showPlayer(player[i],map.returnTileAmount());
 				if(map.getTile(player[i].getPX() ,player[i].getPY()) instanceof WinningTile ){
 					System.out.println("Congratulations winner Player  , "+player[i].getPN());
@@ -47,6 +50,7 @@ public class Game {
 						y1 = rand.nextInt(n) + 0;
 				}
 			}
+			System.out.println("x :"+x1+" y : "+y1);
 			//Create if player is spawned on a grass tile
 			player[i] = new Player(i,x1,y1);
 		}
