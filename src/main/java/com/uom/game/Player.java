@@ -29,16 +29,37 @@ public class Player{
 		return n;
 	}
 	//Changes the position of the player
-	public void move(Player player,char direction){
+	//Also map limits set so player doesnt move out of map
+	public void move(Player player,char direction,int n){
 		switch(direction){
-			case 'u': x = player.getPX()-1;
-					break;	
-			case 'd': x = player.getPX()+1;
-					break;
-			case 'l': y = player.getPY()-1;
-					break;
-			case 'r': y = player.getPY()+1;
-					break;
+			case 'u':if((player.getPX()-1)<=0){
+						x = 0;
+						break;
+					}else{
+						x = player.getPX()-1;
+						break;
+					}
+			case 'd':if((player.getPX()+1)>=n){
+						x = n-1;
+						break;
+					}else{
+						x = player.getPX()+1;
+						break;
+					}
+			case 'l': if((player.getPY()-1)<=0){
+						y = 0;
+						break;
+					}else{
+						y = player.getPY()-1;
+						break;
+					}
+			case 'r': if((player.getPY()+1)>=n){
+						y = n-1;
+						break;
+					}else{
+						y = player.getPY()+1;
+						break;
+					}
 			default : break;
 		}
 	}

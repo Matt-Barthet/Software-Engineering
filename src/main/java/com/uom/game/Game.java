@@ -24,12 +24,14 @@ public class Game {
 			for(i = 0; i < players ; i++){
 				System.out.println("Player , "+player[i].getPN()+" Turn Choose direction");
 				char direction = reader.next().charAt(0);
-				player[i].move(player[i],direction);
+				player[i].move(player[i],direction,map.returnTileAmount());
 				System.out.println("Player , "+player[i].getPN()+" At X "+player[i].getPX()+ " and Y : "+player[i].getPY());
+				//Death sets player back to his spawn point
 				if(map.getTile(player[i].getPX() ,player[i].getPY()) instanceof WaterTile){
 					player[i].moveOriginal();
 				} 
 				showPlayer(player[i],map.returnTileAmount());
+				//Win ends the game and returns the winning player
 				if(map.getTile(player[i].getPX() ,player[i].getPY()) instanceof WinningTile ){
 					System.out.println("Congratulations winner Player  , "+player[i].getPN());
 					return false;
