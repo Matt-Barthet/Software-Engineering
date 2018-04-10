@@ -13,11 +13,7 @@ public class Game {
 		showMap(map,n);
 		winGame(players,player,map);
 	}
-	//Gaming loop
-	//needs more functionality 
-	//Limits of map
-	//Win condition
-	//Water tile deaths(respawning)
+	//Gaming loop keeps playing until game is won 
 	public boolean winGame(int players, Player player[], Map map){
 		while(true){
 			int i = 0;

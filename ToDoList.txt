@@ -4,9 +4,6 @@ Testing feature on sourcetree
 ToDo:
 Main game loop
 Game Init
-Death condition
-players need to stop going out of map
-save players spawn point
 turns are after each other (change to waiting for all players to do a turn)
 
 INPROGRESS:
@@ -17,3 +14,6 @@ Player movement
 Win Condition
 Map
 Console input (text)
+Death condition
+players need to stop going out of map
+save players spawn point
