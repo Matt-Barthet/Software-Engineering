@@ -11,15 +11,10 @@ public class App
     public static void main( String[] args )
     {
         
-        /*List<String> lines = new ArrayList<String>();
-        lines.add(body(
-            h1("Hello, World!")
-        ).render());
-        
-        try{
-        Path file = Paths.get("template.html");
-        Files.write(file, lines, Charset.forName("UTF-8"));
-        } catch (Exception e){}*/
+        Player player = new Player(2,2,3);
+        int map_size = 10;
+        Map map = new Map(map_size);
+        //generateHTMLMap(player, map_size, map);
         
     }
     
