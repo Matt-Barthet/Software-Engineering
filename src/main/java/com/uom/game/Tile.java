@@ -1,3 +1,5 @@
+package com.uom.game;
+
 public abstract class Tile {
 	private int x;
 	private int y;
@@ -19,4 +21,5 @@ public abstract class Tile {
 	static boolean TileAction( int x ,int y,Tile tile){
 		return tile.TileAction(x ,y,tile);
 	}
+    
 }
