@@ -22,16 +22,25 @@ public class Game {
     
 	//Gaming loop keeps playing until game is won 
 	public boolean winGame(int players, Player player[], Map map, int n){
-		while(true){
+		
+        char [] directions = new char [4];
+        
+        while(true){
 			int i = 0;
+            
+            System.out.println("\nCollecting Moves:");
+            
+            for(i = 0; i < players ; i++){
+                System.out.println("Player "+(player[i].getPN()+1)+": Turn Choose direction");
+				directions [i] = reader.next().charAt(0);   
+            }
+            
+            System.out.println("\nExecuting Moves and Generating HTML Files:");
+            
 			for(i = 0; i < players ; i++){
                 
-				System.out.println("Player "+(player[i].getPN()+1)+": Turn Choose direction");
-                
-				char direction = reader.next().charAt(0);
-                
                 //move player
-				player[i].move(player[i],direction,map.returnTileAmount(), map);
+				player[i].move(player[i],directions[i],map.returnTileAmount(), map);
                 
                 //Add uncovered to player's uncovered list
                 player[i].uncovered.add( map.getTile(player[i].getPX(), player[i].getPY()));
