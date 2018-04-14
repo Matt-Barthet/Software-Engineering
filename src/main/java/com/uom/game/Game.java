@@ -144,15 +144,15 @@ public class Game {
                     //show respective tile otherwise
                     if(player.getPX() == i && player.getPY() == j){
                         tile_type = ".player_tile";
-                    }else {
-                        if(map.getTile(i,j) instanceof  WaterTile){
-                            tile_type = ".water_tile";
-                        }else if(map.getTile(i,j) instanceof GrassTile){
-                            tile_type = ".green_tile";
-                        }else if(map.getTile(i,j)  instanceof  WinningTile){
-                            tile_type = ".winning_tile";
-                        }
                     }
+                    if(map.getTile(i,j) instanceof  WaterTile){
+                        tile_type += ".water_tile";
+                    }else if(map.getTile(i,j) instanceof GrassTile){
+                        tile_type += ".green_tile";
+                    }else if(map.getTile(i,j)  instanceof  WinningTile){
+                        tile_type += ".winning_tile";
+                    }
+                    
                 }
 
                 //add the tile according to what type in the html table
@@ -173,8 +173,8 @@ public class Game {
         lines.add("     .green_tile{ background-color: greenyellow}");
         lines.add("     .gray_tile{ background-color: gray}");
         lines.add("     .water_tile{ background-color: skyblue}");
-        lines.add("     .winning_tile{ background-color: gold}");
-        lines.add("     .player_tile{ background-color: black}");
+        lines.add("     .player_tile.green_tile{ background-image: url(player.png); background-repeat: no-repeat; background-size: contain; background-position: center; background-color: greenyellow}");
+        lines.add("     .player_tile.winning_tile{ background-image: url(player.png); background-repeat: no-repeat; background-size: contain; background-position: center; background-color: gold}");
         lines.add("</style>");
         
         //Try catch block to write html to a file

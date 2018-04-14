@@ -2,7 +2,6 @@ The more unit tests test the code the more it is covered with emma so unit tests
 Testing feature on sourcetree
 
 ToDo:
-Improve UI of the HTML Map
 
 INPROGRESS:
 Add unit tests for features
@@ -19,3 +18,4 @@ HTML
 turns are after each other (change to waiting for all players to do a turn)
 Main game loop
 Game Init
+Improve UI of the HTML Map
