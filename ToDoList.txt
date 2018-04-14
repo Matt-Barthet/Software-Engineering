@@ -2,12 +2,10 @@ The more unit tests test the code the more it is covered with emma so unit tests
 Testing feature on sourcetree
 
 ToDo:
-Main game loop
-Game Init
-turns are after each other (change to waiting for all players to do a turn)
+Improve UI of the HTML Map
 
 INPROGRESS:
-HTML
+Add unit tests for features
 
 DONE:
 Player movement
@@ -17,3 +15,7 @@ Console input (text)
 Death condition
 players need to stop going out of map
 save players spawn point
+HTML
+turns are after each other (change to waiting for all players to do a turn)
+Main game loop
+Game Init
