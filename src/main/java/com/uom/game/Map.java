@@ -1,3 +1,5 @@
+package com.uom.game;
+
 import java.util.Random;
 
 public class Map {
@@ -40,6 +42,7 @@ public class Map {
 		win  = new WinningTile(x1,y1);
 		setTile(win,win.getX(),win.getY());
 	}
+    
 	public int returnTileAmount(){
 		return n;
 	}
