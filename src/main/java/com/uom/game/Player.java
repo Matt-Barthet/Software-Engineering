@@ -1,3 +1,5 @@
+package com.uom.game;
+
 //Player Objecy
 public class Player{
 	private int x ,y ,n;
