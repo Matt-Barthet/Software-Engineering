@@ -13,44 +13,65 @@ public class Game {
 	Random rand  = new Random();
 	//Has passing parameters for the game no of players and board size
 	//This will create the map and the html table
+    
 	public Game(int players,int n){
 		Map map = new Map(n);
 		setNumPlayers(players,n,map);
-<<<<<<< HEAD
-		showMap(map,n);
-		winGame(players,player,map);
+		winGame(players,player,map, n);
 	}
+    
 	//Gaming loop keeps playing until game is won 
-	public boolean winGame(int players, Player player[], Map map){
-		while(true){
+	public boolean winGame(int players, Player player[], Map map, int n){
+		
+        char [] directions = new char [4];
+        
+        while(true){
 			int i = 0;
+            
+            System.out.println("\nCollecting Moves:");
+            
+            for(i = 0; i < players ; i++){
+                System.out.println("Player "+(player[i].getPN()+1)+": Turn Choose direction");
+				directions [i] = reader.next().charAt(0);   
+            }
+            
+            System.out.println("\nExecuting Moves and Generating HTML Files:");
+            
 			for(i = 0; i < players ; i++){
-				System.out.println("Player , "+player[i].getPN()+" Turn Choose direction");
-				char direction = reader.next().charAt(0);
-				player[i].move(player[i],direction,map.returnTileAmount());
-				System.out.println("Player , "+player[i].getPN()+" At X "+player[i].getPX()+ " and Y : "+player[i].getPY());
+                
+                //move player
+				player[i].move(player[i],directions[i],map.returnTileAmount(), map);
+                
+                //Add uncovered to player's uncovered list
+                player[i].uncovered.add( map.getTile(player[i].getPX(), player[i].getPY()));
+                
+				//System.out.println("Player , "+(player[i].getPN()+1)+" At X "+player[i].getPX()+ " and Y : "+player[i].getPY());
+                
 				//Death sets player back to his spawn point
 				if(map.getTile(player[i].getPX() ,player[i].getPY()) instanceof WaterTile){
 					player[i].moveOriginal();
 				} 
-				showPlayer(player[i],map.returnTileAmount());
+                
+                //At the end of each turn generate HTML Map
+                generateHTMLMap(player[i], n, map);
+                
 				//Win ends the game and returns the winning player
 				if(map.getTile(player[i].getPX() ,player[i].getPY()) instanceof WinningTile ){
-					System.out.println("Congratulations winner Player  , "+player[i].getPN());
+					System.out.println("Congratulations, the winner is Player "+(player[i].getPN()+1));
 					return false;
 				}
 			}
 		}
-=======
-		generateHTMLMap(n, map);
->>>>>>> bd0e86805f13f3b38504ab610d2be5a6eb57db0f
+
 	}
+    
 	//This should also check if the player is being set on a grass tile or not
 	public void setNumPlayers(int players,int n,Map map){
 		player = new Player[players];
 		for(int i = 0 ; i < players;i++){
 			int x1 = rand.nextInt(n) + 0;
 			int y1 = rand.nextInt(n) + 0;
+            
 			if(!(map.getTile(x1,y1) instanceof GrassTile)){
 				//Continue randomizing the spawn until its a grass tile
 				while(!(map.getTile(x1,y1) instanceof GrassTile)){
@@ -58,29 +79,19 @@ public class Game {
 						y1 = rand.nextInt(n) + 0;
 				}
 			}
-			System.out.println("x :"+x1+" y : "+y1);
+			//System.out.println("x :"+x1+" y : "+y1);
+
 			//Create if player is spawned on a grass tile
 			player[i] = new Player(i,x1,y1);
+            
+            player[i].uncovered.add( map.getTile(player[i].getPX(), player[i].getPY()));
+            
+            generateHTMLMap(player[i], n, map);
 		}
 	}
-	//Temporary function to output the map created on the console
-	public static void showPlayer(Player player,int n){
-		for(int i = 0;i<n;i++){
-			for(int j = 0; j<n;j++){
-				if((player.getPX()==i)&&(player.getPY()==j)){
-					System.out.print(" PP ");
-				}else{
-					System.out.print(" __ ");
-				}
-			}
-			System.out.println();	
-		}
-	}
-<<<<<<< HEAD
-	
-=======
+
     
-    public static void generateHTMLMap(int map_size, Map map){
+    public static void generateHTMLMap(Player player, int map_size, Map map){
         
         //Creating arraylist for storing lines of html which will be written to a file
         List <String> lines = new ArrayList<String>();
@@ -102,7 +113,7 @@ public class Game {
         
         //Adding Titles
         lines.add(h1("Treasure Map").render());
-        lines.add(h2("Player 1" /*+ String.valueOf(player.getPN())*/).render());
+        lines.add(h2("Player " + String.valueOf(player.getPN()+1)).render());
         
         //HTML Code for table
         lines.add("<table>");
@@ -113,28 +124,43 @@ public class Game {
             for(int j = 0; j < map_size; j++){
                 //Each iteration adds a cell
                 
+                //tile type placeholder
                 String tile_type = "";
                 
-                if(map.getTile(i,j) instanceof  WaterTile){
-					tile_type = ".water_tile";
-				}else if(map.getTile(i,j) instanceof GrassTile){
-					tile_type = ".green_tile";
-				}else if(map.getTile(i,j)  instanceof  WinningTile){
-					tile_type = ".winning_tile";
-				}else if(map.getTile(i,j) instanceof PlayerTile){
-					tile_type = ".player_tile";
-				}else if(map.getTile(i,j)==null){
-					tile_type = ".grey_tile";
+                //is tile uncovered?
+                boolean uncovered_bool = false;
+                
+                //if tile is found in player's uncovered list, set to true
+                for(int k = 0; k < player.uncovered.size(); k++){
+                    if((player.uncovered).contains(map.getTile(i,j))){
+                        uncovered_bool = true;
+                    }
+                }
+                
+                //if the tile is covered for this player, show gray tile
+                if(!uncovered_bool){
+					tile_type = ".gray_tile";
 				}else{
-					System.out.print(" ER ");
-				}
-                
-                
+                    //show respective tile otherwise
+                    if(player.getPX() == i && player.getPY() == j){
+                        tile_type = ".player_tile";
+                    }
+                    if(map.getTile(i,j) instanceof  WaterTile){
+                        tile_type += ".water_tile";
+                    }else if(map.getTile(i,j) instanceof GrassTile){
+                        tile_type += ".green_tile";
+                    }else if(map.getTile(i,j)  instanceof  WinningTile){
+                        tile_type += ".winning_tile";
+                    }
+                    
+                }
+
+                //add the tile according to what type in the html table
                 lines.add(td(attrs(tile_type)).render());
             }
             lines.add("</tr>");
         }
-        
+        lines.add("</table>");
         lines.add("</body>");
         //CSS code for the webpage
         lines.add("\n<style data-brackets-id='28976'>");
@@ -147,35 +173,15 @@ public class Game {
         lines.add("     .green_tile{ background-color: greenyellow}");
         lines.add("     .gray_tile{ background-color: gray}");
         lines.add("     .water_tile{ background-color: skyblue}");
-        lines.add("     .winning_tile{ background-color: gold}");
-        lines.add("     .player_tile{ background-color: black}");
+        lines.add("     .player_tile.green_tile{ background-image: url(player.png); background-repeat: no-repeat; background-size: contain; background-position: center; background-color: greenyellow}");
+        lines.add("     .player_tile.winning_tile{ background-image: url(player.png); background-repeat: no-repeat; background-size: contain; background-position: center; background-color: gold}");
         lines.add("</style>");
         
         //Try catch block to write html to a file
         try{
-        Path file = Paths.get("template2.html");
+        Path file = Paths.get("map_player_"+ String.valueOf(player.getPN()+1)+".html");
         Files.write(file, lines, Charset.forName("UTF-8"));
         } catch (Exception e){}
     }
->>>>>>> bd0e86805f13f3b38504ab610d2be5a6eb57db0f
-	//Temporary function to output the map created on the console
-	public static void showMap(Map map,int n){
-		for(int i = 0;i<n;i++){
-			for(int j = 0; j<n;j++){
-				if(map.getTile(i,j) instanceof  WaterTile){
-					System.out.print(" WT ");
-				}else if(map.getTile(i,j) instanceof GrassTile){
-					System.out.print(" GT ");
-				}else if(map.getTile(i,j)  instanceof  WinningTile){
-					System.out.print(" WW ");
-				}else if(map.getTile(i,j)==null){
-					System.out.print(" __ ");
-				}else{
-					System.out.print(" ER ");
-				}
-			}
-			System.out.println();	
-		}
-	}
 	
 }

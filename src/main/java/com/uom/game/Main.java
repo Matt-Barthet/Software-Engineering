@@ -1,4 +1,7 @@
+package com.uom.game;
+
 import java.util.Scanner;
+import static j2html.TagCreator.*;
 
 public class Main {
 	
@@ -7,7 +10,8 @@ public class Main {
 		boolean accept = true;
 		int players = 0 ;
 		int map_size = 0;
-		while(accept){
+		
+        while(accept){
 			System.out.println("Enter the amount of players: min =2 , max = 8  ");
 			players = reader.nextInt();
 			
