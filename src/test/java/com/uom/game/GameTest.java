@@ -58,4 +58,32 @@ public class GameTest extends TestCase {
         assertTrue(expected);
     }
     
+    //Test method to confirm whether a win is confirmed by the game loop
+    public void testWinCondition(){
+        map = new Map(14);
+        int players = 4;
+        
+        //Creating a game object which should contain
+        //4 players with a 14x14 map size
+        Game game = new Game (players, map);
+        
+        assertTrue(game.game_won == false);
+        
+    }
+    
+    //Test to check whether the tiles uncover if a player is placed on them
+    public void testUncover(){
+        map = new Map(14);
+        int players = 4;
+        
+        //Creating a game object which should contain
+        //4 players with a 14x14 map size
+        Game game = new Game (players, map);
+        
+        //check if the uncovered length is equal to two as player was moved
+        //twice in the test case created in the previous test
+        assertTrue(game.player[0].uncovered.size() == 2);
+        
+    }
+    
 }

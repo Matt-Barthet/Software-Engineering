@@ -10,7 +10,8 @@ public class Map {
 	private GrassTile grass[];
 	private WaterTile water[];
 	private WinningTile win;
-	
+    public int winning_x, winning_y;
+    
 	Random rand  = new Random();
 	//Create a map with n*n amount of tiles
 	//This will have to randomly generate the type of tiles
@@ -39,6 +40,8 @@ public class Map {
 		//Set a random position for the winning tile after all tiles are placed
 		int x1 = rand.nextInt(n) + 0;
 		int y1 = rand.nextInt(n) + 0;
+        winning_x = x1;
+        winning_y = y1;
 		win  = new WinningTile(x1,y1);
 		setTile(win,win.getX(),win.getY());
 	}

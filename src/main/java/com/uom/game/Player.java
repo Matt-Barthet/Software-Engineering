@@ -35,6 +35,11 @@ public class Player{
 	public int getPN(){
 		return n;
 	}
+    
+    public void setPXPY(int px, int py){
+        x = px; y = py;
+    }
+    
 	//Changes the position of the player
 	//Also map limits set so player doesnt move out of map
 	public void move(Player player,char direction,int n, Map map){

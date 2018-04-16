@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 public class Game {
 	public Player player[];
+    public boolean game_won;
+    
 	Scanner reader = new Scanner(System.in);
 	Random rand  = new Random();
 	//Has passing parameters for the game no of players and board size
@@ -20,13 +22,36 @@ public class Game {
 		winGame(players,player,map, n);
 	}
     
+    //constructor to create game for testing purposes
+    public Game(int players, Map map){
+        //set number of players accordingly
+        setNumPlayers(players, map.returnTileAmount(), map);
+        
+        //place player 1 straight onto winning tile for testing purposes
+        player[0].setPXPY(map.winning_x, map.winning_y);
+        
+        player[0].uncovered.add( map.getTile(map.winning_x, map.winning_y));
+        
+        //store whether the game completed successfully here
+        game_won = winGame(players, player, map, map.returnTileAmount());
+    }
+    
 	//Gaming loop keeps playing until game is won 
 	public boolean winGame(int players, Player player[], Map map, int n){
 		
         char [] directions = new char [9];
         
         while(true){
-			int i = 0;
+          
+            int i = 0;
+
+            for(i = 0; i < players; i++){
+                //Win ends the game and returns the winning player
+                if(map.getTile(player[i].getPX() ,player[i].getPY()) instanceof WinningTile ){
+                    System.out.println("Congratulations, the winner is Player "+(player[i].getPN()+1));
+                    return false;
+                }               
+            }
             
             System.out.println("\nCollecting Moves:");
             
@@ -55,11 +80,6 @@ public class Game {
                 //At the end of each turn generate HTML Map
                 generateHTMLMap(player[i], n, map);
                 
-				//Win ends the game and returns the winning player
-				if(map.getTile(player[i].getPX() ,player[i].getPY()) instanceof WinningTile ){
-					System.out.println("Congratulations, the winner is Player "+(player[i].getPN()+1));
-					return false;
-				}
 			}
 		}
 
