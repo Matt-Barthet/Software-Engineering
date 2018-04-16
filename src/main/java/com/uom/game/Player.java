@@ -5,7 +5,7 @@ import java.util.*;
 //Player Objecy
 public class Player{
 	private int x ,y ,n;
-	public int temp_x , temp_y;
+	private int temp_x , temp_y;
     
     public List<Tile> uncovered = new ArrayList<Tile>();
     

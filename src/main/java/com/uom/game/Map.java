@@ -54,9 +54,5 @@ public class Map {
 	public Tile getTile(int x ,int y){
 		return tile[x][y];
 	}
-	//Changes the type of tile 
-	public void changeTile(int x,int y){
-		
-	}
 	
 }

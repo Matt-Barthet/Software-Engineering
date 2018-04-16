@@ -23,7 +23,7 @@ public class Game {
 	//Gaming loop keeps playing until game is won 
 	public boolean winGame(int players, Player player[], Map map, int n){
 		
-        char [] directions = new char [4];
+        char [] directions = new char [9];
         
         while(true){
 			int i = 0;

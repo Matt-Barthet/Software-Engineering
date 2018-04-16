@@ -5,8 +5,4 @@ public class PlayerTile extends Tile {
 	public PlayerTile(int x ,int y){
 		super(x,y);
 	}
-	//Tile action goes here
-	static boolean TileAction( int x ,int y,Tile t){
-		return false;
-	}
 }

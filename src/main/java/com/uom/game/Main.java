@@ -12,7 +12,7 @@ public class Main {
 		int map_size = 0;
 		
         while(accept){
-			System.out.println("Enter the amount of players: min =2 , max = 8  ");
+			System.out.println("Enter the amount of players: min = 2 , max = 8  ");
 			players = reader.nextInt();
 			
 			System.out.println("Enter the size of the map: min = 5 ,max = 50 ");

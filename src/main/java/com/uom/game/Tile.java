@@ -17,9 +17,5 @@ public abstract class Tile {
 	public int getY(){
 		return y;
 	}
-	//Maybe change return type of polymorphed function
-	static boolean TileAction( int x ,int y,Tile tile){
-		return tile.TileAction(x ,y,tile);
-	}
     
 }
