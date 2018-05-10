@@ -10,8 +10,17 @@ public class Main {
 		boolean accept = true;
 		int players = 0 ;
 		int map_size = 0;
+		int map_type = 0;
 		
         while(accept){
+			System.out.println("Enter the kind of map you want 1 = safe , 2 = hazardous");
+			map_type = reader.nextInt();
+			
+			if(map_type != 1 || map_type != 2){
+				accept = false;
+				System.out.println("Wrong Map Type Selected");
+			}
+			
 			System.out.println("Enter the amount of players: min = 2 , max = 8  ");
 			players = reader.nextInt();
 			
@@ -32,6 +41,6 @@ public class Main {
 			}
 		
 		}
-		Game g = new Game(players,map_size);
+		Game g = new Game(players,map_size,map_type);
     }
 }

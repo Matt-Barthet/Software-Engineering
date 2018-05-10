@@ -19,3 +19,6 @@ turns are after each other (change to waiting for all players to do a turn)
 Main game loop
 Game Init
 Improve UI of the HTML Map
+
+mvn clean package
+java -cp target/game-1.0-SNAPSHOT-jar-with-dependencies.jar com.uom.game.Main

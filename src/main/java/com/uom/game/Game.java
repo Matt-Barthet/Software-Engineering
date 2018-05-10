@@ -16,8 +16,8 @@ public class Game {
 	//Has passing parameters for the game no of players and board size
 	//This will create the map and the html table
     
-	public Game(int players,int n){
-		Map map = new Map(n);
+	public Game(int players,int n,int map_type){
+		Map map = new Map(n,map_type);
 		setNumPlayers(players,n,map);
 		winGame(players,player,map, n);
 	}

@@ -15,18 +15,32 @@ public class Map {
 	Random rand  = new Random();
 	//Create a map with n*n amount of tiles
 	//This will have to randomly generate the type of tiles
-	public Map(int n){
+	public Map(int n,int type){
+		double temp_percent;
+		if(type == 1 ){
+			temp_percent = 1.0;
+		}else if(type == 2){
+			int temp_choice = rand.nextInt(1);
+			if(temp_choice == 0){
+				temp_percent = 2.5;
+			}else{
+				temp_percent = 3.5;
+			}
+			
+		}
+		
 		this.n = n;
 		//Create the tiles and set them 
 		tile = new Tile[n][n];
 		grass = new GrassTile[n*n];
 		water = new WaterTile[n*n];
+		
 		//Going through every tile randomly generate water or grass tiles
 		for (int i = 0 ;i < n; i++){
 			for (int j = 0 ;j < n; j++){
-				int percent = rand.nextInt(10) + 1;
+				double percent = rand.nextDouble(10.0) + 1.0;
 				//Change the percentage to change the spawn rate of water tiles
-				if(percent>=9){
+				if(percent>=(10.0-temp_percent)){
 					water[k] = new WaterTile(i,j);
 					setTile(water[k],water[k].getX(),water[k].getY());
 					k++;
