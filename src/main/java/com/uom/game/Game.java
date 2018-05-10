@@ -23,7 +23,7 @@ public class Game {
 	}
     
     //constructor to create game for testing purposes
-    public Game(int players, Map map){
+    public Game(int players, Map map,int map_type){
         //set number of players accordingly
         setNumPlayers(players, map.returnTileAmount(), map);
         

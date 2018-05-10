@@ -34,7 +34,7 @@ public class PlayerTest extends TestCase {
 	
 	//Testing movement up
 	public void testMoveUp(){
-		map = new Map(5);
+		map = new Map(5,1);
 		player = new Player(1,2,3);
 		player.move(player,'u',5,map);
 		int ansx = player.getPX();
@@ -46,7 +46,7 @@ public class PlayerTest extends TestCase {
 	
 	//Testing movement down
 	public void testMoveDown(){
-		map = new Map(5);
+		map = new Map(5,1);
 		player = new Player(1,2,3);
 		player.move(player,'d',5,map);
 		int ansx = player.getPX();
@@ -58,7 +58,7 @@ public class PlayerTest extends TestCase {
 	
 	//Testing movement left
 	public void testMoveLeft(){
-		map = new Map(5);
+		map = new Map(5,1);
 		player = new Player(1,2,3);
 		player.move(player,'l',5,map);
 		int ansx = player.getPY();
@@ -70,7 +70,7 @@ public class PlayerTest extends TestCase {
 	
 	//Testing movement right
 	public void testMoveRight(){
-		map = new Map(5);
+		map = new Map(5,1);
 		player = new Player(1,2,3);
 		player.move(player,'r',5,map);
 		int ansx = player.getPY();
@@ -82,7 +82,7 @@ public class PlayerTest extends TestCase {
 	
 	//Testing movement Failure
 	public void testMoveFail(){
-		map = new Map(5);
+		map = new Map(5,1);
 		player = new Player(1,2,3);
 		player.move(player,'a',5,map);
 		int ansy = player.getPY();
@@ -95,7 +95,7 @@ public class PlayerTest extends TestCase {
 	
 	//Testing returning starting positions after a player has moved
 	public void testStartPos(){
-		map = new Map(5);
+		map = new Map(5,1);
 		player = new Player(1,2,3);
 		
 		player.move(player,'u',5,map);

@@ -17,15 +17,15 @@ public class GameTest extends TestCase {
 	
 	//Setting up the map
 	protected void setup(){
-		map = new Map(14);
+		map = new Map(14,1);
 	}
     
     //Testing that the right amount of players are created
     public void testPlayerAmount(){
-        map = new Map(14);
+        map = new Map(14,1);
         //Creating a game object which should contain
         //4 players with a 14x14 map size
-        Game game = new Game (4, map);
+        Game game = new Game (4, map,1);
         
         //expected number of players
         int expected = 4;
@@ -38,12 +38,12 @@ public class GameTest extends TestCase {
     
     //Test to check that the right number of html files are being generated
     public void testHTMLGenerator(){
-        map = new Map(14);
+        map = new Map(14,1);
         int players = 4;
         
         //Creating a game object which should contain
         //4 players with a 14x14 map size
-        Game game = new Game (players, map);
+        Game game = new Game (players, map, 1);
         
         boolean expected = true;
         
@@ -60,12 +60,12 @@ public class GameTest extends TestCase {
     
     //Test method to confirm whether a win is confirmed by the game loop
     public void testWinCondition(){
-        map = new Map(14);
+        map = new Map(14,1);
         int players = 4;
         
         //Creating a game object which should contain
         //4 players with a 14x14 map size
-        Game game = new Game (players, map);
+        Game game = new Game (players, map,1);
         
         assertTrue(game.game_won == false);
         
@@ -73,12 +73,12 @@ public class GameTest extends TestCase {
     
     //Test to check whether the tiles uncover if a player is placed on them
     public void testUncover(){
-        map = new Map(14);
+        map = new Map(14,1);
         int players = 4;
         
         //Creating a game object which should contain
         //4 players with a 14x14 map size
-        Game game = new Game (players, map);
+        Game game = new Game (players, map,1);
         
         //check if the uncovered length is equal to two as player was moved
         //twice in the test case created in the previous test
