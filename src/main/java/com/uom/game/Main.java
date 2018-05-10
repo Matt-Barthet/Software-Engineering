@@ -8,7 +8,7 @@ public class Main {
     public static void main( String[] args ){
 		Scanner reader = new Scanner(System.in);
 		boolean accept = true;
-		int players = 0 ;
+	    int players = 0 ;
 		int map_size = 0;
 		int map_type = 0;
 		

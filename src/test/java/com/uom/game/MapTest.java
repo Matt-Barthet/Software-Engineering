@@ -25,6 +25,15 @@ public class MapTest extends TestCase {
 		
 		assertTrue(expected == ans);
 	}
+	
+	//Testing the return on the tile type
+	public void testMapType(){
+		map = new Map(14,1);
+		int ans = map.return_map_type();
+		int expected = 1;
+		
+		assertTrue(expected == ans);
+	}
 	//Testing the tile setting for the water tiles
 	public void testWaterTile(){
 		map = new Map(14,1);
