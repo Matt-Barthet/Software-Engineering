@@ -1,11 +1,13 @@
 package com.uom.game;
 
 import java.util.*;
+import java.lang.Math;
 
 //Player Objecy
 public class Player{
 	private int x ,y ,n;
 	private int temp_x , temp_y;
+    int team_number = 0;
     
     public List<Tile> uncovered = new ArrayList<Tile>();
     
@@ -80,5 +82,10 @@ public class Player{
 		x = temp_x;
 		y = temp_y;
 	}
+    
+    public void set_team(int no_of_teams){
+        team_number = (int)(Math.random()* no_of_teams + 1);
+        
+    }
 	
 }
