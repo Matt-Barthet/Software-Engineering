@@ -17,7 +17,8 @@ public class Game {
 	//This will create the map and the html table
     
 	public Game(int players,int n,int map_type){
-		Map map = new Map(n,map_type);
+		Map map = Map.getInstance();
+		map.GenerateMap(n,map_type);
 		setNumPlayers(players,n,map);
 		winGame(players,player,map, n);
 	}

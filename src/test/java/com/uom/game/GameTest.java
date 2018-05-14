@@ -1,13 +1,15 @@
 package com.uom.game;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.framework.*;
+import org.junit.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.nio.file.*;
 import java.nio.charset.*;
 
-public class GameTest extends TestCase {
+public class GameTest  {
 	private Player player;
 	private Map map;
 	private WaterTile water;
@@ -15,14 +17,23 @@ public class GameTest extends TestCase {
 	private WinningTile win;
 	private Tile tile;
 	
-	//Setting up the map
-	protected void setup(){
-		map = new Map(14,1);
-	}
-    
+	
+	//Done to test Singleton map
+	@Before
+    public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+       Field map = Map.class.getDeclaredField("instance");
+       map.setAccessible(true);
+       map.set(null, null);
+    }
+	
     //Testing that the right amount of players are created
-    public void testPlayerAmount(){
-        map = new Map(14,1);
+    @Test
+	public void testPlayerAmount(){
+		
+		Map map = Map.getInstance();
+		map.GenerateMap(14,1);
+        
+		//map = new Map(14,1);
         //Creating a game object which should contain
         //4 players with a 14x14 map size
         Game game = new Game (4, map,1);
@@ -37,8 +48,10 @@ public class GameTest extends TestCase {
     }
     
     //Test to check that the right number of html files are being generated
+	@Test
     public void testHTMLGenerator(){
-        map = new Map(14,1);
+        Map map = Map.getInstance();
+		map.GenerateMap(14,1);
         int players = 4;
         
         //Creating a game object which should contain
@@ -59,8 +72,10 @@ public class GameTest extends TestCase {
     }
     
     //Test method to confirm whether a win is confirmed by the game loop
-    public void testWinCondition(){
-        map = new Map(14,1);
+    @Test
+	public void testWinCondition(){
+       Map map = Map.getInstance();
+		map.GenerateMap(14,1);
         int players = 4;
         
         //Creating a game object which should contain
@@ -72,8 +87,10 @@ public class GameTest extends TestCase {
     }
     
     //Test to check whether the tiles uncover if a player is placed on them
-    public void testUncover(){
-        map = new Map(14,1);
+    @Test
+	public void testUncover(){
+        Map map = Map.getInstance();
+		map.GenerateMap(14,1);
         int players = 4;
         
         //Creating a game object which should contain

@@ -2,8 +2,7 @@ package com.uom.game;
 
 import java.util.Random;
 
-public class Map {
-	//Change to private later
+public class Map {	
 	private int k = 0;
 	private int n ;
 	private int type;
@@ -12,11 +11,21 @@ public class Map {
 	private WinningTile win;
 	public Tile[][] tile;
     public int winning_x, winning_y;
-    
+	private static Map instance = new Map();
 	Random rand  = new Random();
 	//Create a map with n*n amount of tiles
 	//This will have to randomly generate the type of tiles
-	public Map(int n,int type){
+	//Private constructor so that this class cannot be instantiated
+	private Map(){ }
+    //Returns Single Instance of Map
+	public static Map getInstance(){
+		if(instance == null){
+			instance = new Map();
+		}
+		return instance;
+	}
+	public void GenerateMap(int n , int type){
+		//Using Builder Design Pattern
 		//Messy needs better structure
 		this.type = type;
 		this.n = n;
@@ -70,7 +79,6 @@ public class Map {
 		win  = new WinningTile(x1,y1);
 		setTile(win,win.getX(),win.getY());
 	}
-    
 	//Returns the amount of tiles generated
 	public int returnTileAmount(){
 		return n;

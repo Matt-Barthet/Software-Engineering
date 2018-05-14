@@ -2,11 +2,19 @@ The more unit tests test the code the more it is covered with emma so unit tests
 Testing feature on sourcetree
 
 ToDo:
+Exceptions
+Testing Failure Cases
+Use Appropriate Design Patterns
+Make Sure Encapsulation is Good
+
 
 INPROGRESS:
-Add unit tests for features
+SingleTon Unit Tests in progress
 
 DONE:
+SingleTon Map Done
+Hazard Map
+Add unit tests for features
 Player movement
 Win Condition
 Map
