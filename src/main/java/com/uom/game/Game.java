@@ -25,19 +25,17 @@ public class Game {
 		
 		//GeneralMap generalmap = map_engineer.getMap();
 		if(map_type == 1){
-			SafeMap map_1 = new SafeMap();
+			SafeMap map_1 = SafeMap.getInstance();
 			map_engineer = new MapEngineer(map_1);
 			map_engineer.constructMap(n,map_type);
 		}else if(map_type == 2){
-			HazardMap map_1 = new HazardMap();
+			HazardMap map_1 = HazardMap.getInstance();
 			map_engineer = new MapEngineer(map_1);
 			map_engineer.constructMap(n,map_type);
 		}else{
 			//Error
 		}
 		map = map_engineer.getMap();
-		//Map map = Map.getInstance();
-		//map.GenerateMap(n,map_type);
 		setNumPlayers(players,n,map);
 		winGame(players,player,map, n);
 	}
