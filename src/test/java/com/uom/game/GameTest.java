@@ -17,7 +17,7 @@ public class GameTest  {
 	private WinningTile win;
 	private Tile tile;
 	
-	
+	/*
 	//Done to test Singleton map
 	@Before
     public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -102,5 +102,6 @@ public class GameTest  {
         assertTrue(game.player[0].uncovered.size() == 2);
         
     }
+	*/
     
 }

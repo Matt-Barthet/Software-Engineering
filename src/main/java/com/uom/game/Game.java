@@ -10,21 +10,40 @@ import java.util.Scanner;
 public class Game {
 	public Player player[];
     public boolean game_won;
-    
+    private GeneralMap map;
+	private MapEngineer map_engineer;
 	Scanner reader = new Scanner(System.in);
 	Random rand  = new Random();
 	//Has passing parameters for the game no of players and board size
 	//This will create the map and the html table
     
 	public Game(int players,int n,int map_type){
-		Map map = Map.getInstance();
-		map.GenerateMap(n,map_type);
+		//MapBuilder safebuilder =  SafeMap.getInstance();
+		//MapEngineer map_engineer = new MapEngineer(safebuilder);
+		
+		//map_engineer.constructMap(n,map_type);
+		
+		//GeneralMap generalmap = map_engineer.getMap();
+		if(map_type == 1){
+			SafeMap map_1 = new SafeMap();
+			map_engineer = new MapEngineer(map_1);
+			map_engineer.constructMap(n,map_type);
+		}else if(map_type == 2){
+			HazardMap map_1 = new HazardMap();
+			map_engineer = new MapEngineer(map_1);
+			map_engineer.constructMap(n,map_type);
+		}else{
+			//Error
+		}
+		map = map_engineer.getMap();
+		//Map map = Map.getInstance();
+		//map.GenerateMap(n,map_type);
 		setNumPlayers(players,n,map);
 		winGame(players,player,map, n);
 	}
     
     //constructor to create game for testing purposes
-    public Game(int players, Map map,int map_type){
+    public Game(int players, GeneralMap map,int map_type){
         //set number of players accordingly
         setNumPlayers(players, map.returnTileAmount(), map);
         
@@ -38,7 +57,7 @@ public class Game {
     }
     
 	//Gaming loop keeps playing until game is won 
-	public boolean winGame(int players, Player player[], Map map, int n){
+	public boolean winGame(int players, Player player[], GeneralMap map, int n){
 		
         char [] directions = new char [9];
         
@@ -87,7 +106,7 @@ public class Game {
 	}
     
 	//This should also check if the player is being set on a grass tile or not
-	public void setNumPlayers(int players,int n,Map map){
+	public void setNumPlayers(int players,int n,GeneralMap map){
 		player = new Player[players];
 		for(int i = 0 ; i < players;i++){
 			int x1 = rand.nextInt(n) + 0;
@@ -112,7 +131,7 @@ public class Game {
 	}
 
     
-    public static void generateHTMLMap(Player player, int map_size, Map map){
+    public static void generateHTMLMap(Player player, int map_size, GeneralMap map){
         
         //Creating arraylist for storing lines of html which will be written to a file
         List <String> lines = new ArrayList<String>();

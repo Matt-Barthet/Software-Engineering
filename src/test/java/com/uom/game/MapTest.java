@@ -14,7 +14,7 @@ public class MapTest{
 	private WinningTile win;
 	private Tile tile;
 	private Map map;
-	
+	/*
 	//Done to test Singleton map
 	@Before
     public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -86,4 +86,5 @@ public class MapTest{
 		
 		assertTrue(expected == ans);
 	}
+	*/
 }

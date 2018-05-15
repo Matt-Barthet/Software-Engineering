@@ -42,7 +42,7 @@ public class Player{
     
 	//Changes the position of the player
 	//Also map limits set so player doesnt move out of map
-	public void move(Player player,char direction,int n, Map map){
+	public void move(Player player,char direction,int n, GeneralMap map){
 		switch(direction){
 			case 'u':if((player.getPX()-1)<=0){
 						x = 0;
