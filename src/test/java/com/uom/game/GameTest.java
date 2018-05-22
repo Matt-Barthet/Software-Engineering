@@ -11,13 +11,16 @@ import java.nio.charset.*;
 
 public class GameTest  {
 	private Player player;
-	private Map map;
+	private GeneralMap map;
+	private SafeMap map_1;
+	private HazardMap map_2;
+	private MapEngineer map_engineer;
 	private WaterTile water;
 	private GrassTile grass;
 	private WinningTile win;
 	private Tile tile;
 	
-	/*
+
 	//Done to test Singleton map
 	@Before
     public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -25,18 +28,20 @@ public class GameTest  {
        map.setAccessible(true);
        map.set(null, null);
     }
-	
     //Testing that the right amount of players are created
     @Test
 	public void testPlayerAmount(){
-		
-		Map map = Map.getInstance();
-		map.GenerateMap(14,1);
-        
-		//map = new Map(14,1);
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
         //Creating a game object which should contain
         //4 players with a 14x14 map size
-        Game game = new Game (4, map,1);
+        Game game = new Game (players, map);
         
         //expected number of players
         int expected = 4;
@@ -46,7 +51,7 @@ public class GameTest  {
         assertTrue(expected == actual);
         
     }
-    
+    /*
     //Test to check that the right number of html files are being generated
 	@Test
     public void testHTMLGenerator(){
@@ -102,6 +107,6 @@ public class GameTest  {
         assertTrue(game.player[0].uncovered.size() == 2);
         
     }
-	*/
-    
+
+    */
 }

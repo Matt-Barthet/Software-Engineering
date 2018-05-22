@@ -11,6 +11,8 @@ public class Game {
 	public Player player[];
     public boolean game_won;
     private GeneralMap map;
+	private SafeMap map_1;
+	private HazardMap map_2;
 	private MapEngineer map_engineer;
 	Scanner reader = new Scanner(System.in);
 	Random rand  = new Random();
@@ -29,8 +31,8 @@ public class Game {
 			map_engineer = new MapEngineer(map_1);
 			map_engineer.constructMap(n,map_type);
 		}else if(map_type == 2){
-			HazardMap map_1 = HazardMap.getInstance();
-			map_engineer = new MapEngineer(map_1);
+			HazardMap map_2 = HazardMap.getInstance();
+			map_engineer = new MapEngineer(map_2);
 			map_engineer.constructMap(n,map_type);
 		}else{
 			//Error
@@ -41,7 +43,7 @@ public class Game {
 	}
     
     //constructor to create game for testing purposes
-    public Game(int players, GeneralMap map,int map_type){
+    public Game(int players, GeneralMap map){
         //set number of players accordingly
         setNumPlayers(players, map.returnTileAmount(), map);
         
