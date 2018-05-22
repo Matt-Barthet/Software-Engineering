@@ -9,8 +9,11 @@ import java.lang.reflect.Method;
 
 public class PlayerTest {
 	protected Player player;
-	private Map map;
-	/*
+	private GeneralMap map;
+	private SafeMap map_1;
+	private HazardMap map_2;
+	private MapEngineer map_engineer;
+	
 	//Done to test Singleton map
 	@Before
     public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -20,8 +23,14 @@ public class PlayerTest {
     }
 	//Setup
 	public void setup(){
-		Map map = Map.getInstance();
-	    map.GenerateMap(5,1);
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
 	}
 	//Testing returns 
 	@Test
@@ -134,6 +143,5 @@ public class PlayerTest {
 		assertTrue(expectedstx == startx);
 		assertTrue(expectedsty == starty);
 	}
-	*/
 
-}
+}	

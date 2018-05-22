@@ -30,7 +30,7 @@ public class GameTest  {
     }
     //Testing that the right amount of players are created
     @Test
-	public void testPlayerAmount(){
+	public void testPlayerAmountSafe(){
 		int tiles = 14;
 		int players = 4;
 		int type = 1;
@@ -51,17 +51,43 @@ public class GameTest  {
         assertTrue(expected == actual);
         
     }
-    /*
-    //Test to check that the right number of html files are being generated
+	//Testing the Hazard Map Setting players
 	@Test
-    public void testHTMLGenerator(){
-        Map map = Map.getInstance();
-		map.GenerateMap(14,1);
-        int players = 4;
-        
+	public void testPlayerAmountHazard(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Hazard Map Instance
+		HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
         //Creating a game object which should contain
         //4 players with a 14x14 map size
-        Game game = new Game (players, map, 1);
+        Game game = new Game (players, map);
+        
+        //expected number of players
+        int expected = 4;
+        //actual number of players
+        int actual = game.player.length;
+        
+        assertTrue(expected == actual);
+    }
+
+    //Test to check that the right number of html files are being generated
+	@Test
+    public void testHTMLGeneratorSafe(){
+        int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+        //Creating a game object which should contain
+        //4 players with a 14x14 map size
+        Game game = new Game (players, map);
         
         boolean expected = true;
         
@@ -78,14 +104,18 @@ public class GameTest  {
     
     //Test method to confirm whether a win is confirmed by the game loop
     @Test
-	public void testWinCondition(){
-       Map map = Map.getInstance();
-		map.GenerateMap(14,1);
-        int players = 4;
-        
+	public void testWinConditionSafe(){
+        int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
         //Creating a game object which should contain
         //4 players with a 14x14 map size
-        Game game = new Game (players, map,1);
+        Game game = new Game (players, map);
         
         assertTrue(game.game_won == false);
         
@@ -93,14 +123,88 @@ public class GameTest  {
     
     //Test to check whether the tiles uncover if a player is placed on them
     @Test
-	public void testUncover(){
-        Map map = Map.getInstance();
-		map.GenerateMap(14,1);
-        int players = 4;
+	public void testUncoverSafe(){
+        int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
         
         //Creating a game object which should contain
         //4 players with a 14x14 map size
-        Game game = new Game (players, map,1);
+        Game game = new Game (players, map);
+        
+        //check if the uncovered length is equal to two as player was moved
+        //twice in the test case created in the previous test
+        assertTrue(game.player[0].uncovered.size() == 2);
+        
+    }
+	
+	
+	//Test to check that the right number of html files are being generated
+	@Test
+    public void testHTMLGeneratorHazard(){
+       int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Hazard Map Instance
+		HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+        //Creating a game object which should contain
+        //4 players with a 14x14 map size
+        Game game = new Game (players, map);
+        
+        boolean expected = true;
+        
+        for(int i = 0; i < players; i++){
+            Path file = Paths.get("map_player_"+(i+1)+".html");
+            if(Files.notExists(file)){
+                expected = false;
+            }
+        }
+
+        //if html files are as expected, return true
+        assertTrue(expected);
+    }
+    
+    //Test method to confirm whether a win is confirmed by the game loop
+    @Test
+	public void testWinConditionHazard(){
+        int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Hazard Map Instance
+		HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+        //Creating a game object which should contain
+        //4 players with a 14x14 map size
+        Game game = new Game (players, map);
+        
+        assertTrue(game.game_won == false);
+        
+    }
+    
+    //Test to check whether the tiles uncover if a player is placed on them
+    @Test
+	public void testUncoverHazard(){
+       int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Hazard Map Instance
+		HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+        //Creating a game object which should contain
+        //4 players with a 14x14 map size
+        Game game = new Game (players, map);
         
         //check if the uncovered length is equal to two as player was moved
         //twice in the test case created in the previous test
@@ -108,5 +212,4 @@ public class GameTest  {
         
     }
 
-    */
 }

@@ -4,15 +4,16 @@ Testing feature on sourcetree
 ToDo:
 Exceptions
 Testing Failure Cases
-Use Appropriate Design Patterns
 Make Sure Encapsulation is Good
 
 
 INPROGRESS:
 SingleTon Unit Tests in progress
+Builder Unit Tests in progress
 
 DONE:
 SingleTon Map Done
+Use Appropriate Design Patterns
 Hazard Map
 Add unit tests for features
 Player movement

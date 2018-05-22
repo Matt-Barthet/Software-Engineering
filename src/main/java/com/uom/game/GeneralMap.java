@@ -21,14 +21,7 @@ public class GeneralMap implements MapPlan{
 	public GeneralMap(){
 		this.generalmap = generalmap;
 	}
-	/*
-	public GeneralMap getInstance(){
-		if(instance == null){
-			instance = new GeneralMap();
-		}
-		return instance;
-	}
-	*/
+
 	//Setting the type
 	public void setType(int map_type){
 		this.map_type = map_type;

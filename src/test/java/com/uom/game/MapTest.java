@@ -13,8 +13,11 @@ public class MapTest{
 	private GrassTile grass;
 	private WinningTile win;
 	private Tile tile;
-	private Map map;
-	/*
+	private GeneralMap map;
+	private SafeMap map_1;
+	private HazardMap map_2;
+	private MapEngineer map_engineer;
+
 	//Done to test Singleton map
 	@Before
     public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
@@ -24,33 +27,51 @@ public class MapTest{
     }
 	//Testing the return on the tile amounts
 	@Test
-	public void testAmountReturn(){
-		Map map = Map.getInstance();
-	    map.GenerateMap(14,1);
+	public void testAmountReturnSafe(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+
 		int ans = map.returnTileAmount();
 		int expected = 14;
-		System.out.println("RETURNING AMOUTN OF TILES"+ans);
 		assertTrue(expected == ans);
 	}
-	
+
 	//Testing the return on the tile type
 	@Test
-	public void testMapType(){
+	public void testMapTypeSafe(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
 		
-		Map map = Map.getInstance();
-	    map.GenerateMap(14,1);
 		int ans = map.return_map_type();
-		System.out.println("RETURNING TYPE OF MAP"+ans);
+		
 		int expected = 1;
 		
 		assertTrue(expected == ans);
 	}
 	//Testing the tile setting for the water tiles
 	@Test
-	public void testWaterTile(){
+	public void testWaterTileSafe(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
 		
-		Map map = Map.getInstance();
-	    map.GenerateMap(14,1);
 		water = new WaterTile(2,2);
 		map.setTile(water,2,2);
 		Tile ans = map.getTile(2 ,2);
@@ -61,10 +82,16 @@ public class MapTest{
 	
 	//Testing the tile setting for the grass tiles
 	@Test
-	public void testGrassTile(){
+	public void testGrassTileSafe(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
 		
-		Map map = Map.getInstance();
-	    map.GenerateMap(14,1);
 		grass = new GrassTile(3,3);
 		map.setTile(grass,3,3);
 		Tile ans = map.getTile(3 ,3);
@@ -75,10 +102,16 @@ public class MapTest{
 	
 	//Testing the tile setting for the winning tile
 	@Test
-	public void testWinTile(){
+	public void testWinTileSafe(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
 		
-		Map map = Map.getInstance();
-	    map.GenerateMap(14,1);
 		win = new WinningTile(4,4);
 		map.setTile(win,4,4);
 		Tile ans = map.getTile(4 ,4);
@@ -86,5 +119,99 @@ public class MapTest{
 		
 		assertTrue(expected == ans);
 	}
-	*/
+	//Testing the return on the tile amounts
+	@Test
+	public void testAmountReturnHazard(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Hazard Map Instance
+		HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+
+		int ans = map.returnTileAmount();
+		int expected = 14;
+		assertTrue(expected == ans);
+	}
+
+	//Testing the return on the tile type
+	@Test
+	public void testMapTypeHazard(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Hazard Map Instance
+		HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+		
+		int ans = map.return_map_type();
+		
+		int expected = 1;
+		
+		assertTrue(expected == ans);
+	}
+	//Testing the tile setting for the water tiles
+	@Test
+	public void testWaterTileHazard(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Hazard Map Instance
+		HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+		
+		water = new WaterTile(2,2);
+		map.setTile(water,2,2);
+		Tile ans = map.getTile(2 ,2);
+		Tile expected = water;
+		
+		assertTrue(expected == ans);
+	}
+	
+	//Testing the tile setting for the grass tiles
+	@Test
+	public void testGrassTileHazard(){
+		 int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Hazard Map Instance
+		HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+		
+		grass = new GrassTile(3,3);
+		map.setTile(grass,3,3);
+		Tile ans = map.getTile(3 ,3);
+		Tile expected = grass;
+		
+		assertTrue(expected == ans);
+	}
+	
+	//Testing the tile setting for the winning tile
+	@Test
+	public void testWinTileHazard(){
+		 int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Hazard Map Instance
+		HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+		
+		win = new WinningTile(4,4);
+		map.setTile(win,4,4);
+		Tile ans = map.getTile(4 ,4);
+		Tile expected = win;
+		
+		assertTrue(expected == ans);
+	}
+	
 }
