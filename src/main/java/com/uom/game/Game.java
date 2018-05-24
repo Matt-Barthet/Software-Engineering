@@ -14,17 +14,23 @@ public class Game {
 	private SafeMap map_1;
 	private HazardMap map_2;
 	private MapEngineer map_engineer;
+    public Score_Subject team_uncovered [];
+    public Abstract_Subject score = new Score_Subject();
 	Scanner reader = new Scanner(System.in);
 	Random rand  = new Random();
 	//Has passing parameters for the game no of players and board size
 	//This will create the map and the html table
     
-	public Game(int players,int n,int map_type){
+	public Game(int players,int n,int map_type, int no_of_teams){
 		//MapBuilder safebuilder =  SafeMap.getInstance();
 		//MapEngineer map_engineer = new MapEngineer(safebuilder);
 		
 		//map_engineer.constructMap(n,map_type);
-		
+        team_uncovered = new Score_Subject [no_of_teams];
+        for(int i = 0; i < no_of_teams; i++){
+            team_uncovered[i] = new Score_Subject();
+        }
+        
 		//GeneralMap generalmap = map_engineer.getMap();
 		if(map_type == 1){
 			SafeMap map_1 = SafeMap.getInstance();
@@ -38,19 +44,31 @@ public class Game {
 			//Error
 		}
 		map = map_engineer.getMap();
-		setNumPlayers(players,n,map);
+		setNumPlayers(players,n,map, no_of_teams);
+        winGame(players,player,map, n);
+
+    }
+	/*public Game(int players,int n,int map_type, int no_of_teams){
+        team_uncovered = new Score_Subject [no_of_teams];
+        for(int i = 0; i < no_of_teams; i++){
+            team_uncovered[i] = new Score_Subject();
+        }
+        
+		Map map = new Map(n,map_type);
+		setNumPlayers(players,n,map, no_of_teams);
+
 		winGame(players,player,map, n);
 	}
-    
+    */
     //constructor to create game for testing purposes
     public Game(int players, GeneralMap map){
         //set number of players accordingly
-        setNumPlayers(players, map.returnTileAmount(), map);
+        setNumPlayers(players, map.returnTileAmount(), map, 0);
         
         //place player 1 straight onto winning tile for testing purposes
         player[0].setPXPY(map.winning_x, map.winning_y);
+        player[0].observer_state.add( map.getTile(map.winning_x, map.winning_y));
         
-        player[0].uncovered.add( map.getTile(map.winning_x, map.winning_y));
         
         //store whether the game completed successfully here
         game_won = winGame(players, player, map, map.returnTileAmount());
@@ -87,8 +105,12 @@ public class Game {
                 //move player
 				player[i].move(player[i],directions[i],map.returnTileAmount(), map);
                 
-                //Add uncovered to player's uncovered list
-                player[i].uncovered.add( map.getTile(player[i].getPX(), player[i].getPY()));
+                //Add current discovery to team list
+                if(player[i].team_number != 0){
+                    team_uncovered[player[i].team_number-1].set_state(map.getTile(player[i].getPX(), player[i].getPY()));
+                    //Update all team member's uncovered list to include latest addition
+                    //update_team(player[i].team_number, player, team_uncovered[player[i].team_number-1]);
+                }
                 
 				//System.out.println("Player , "+(player[i].getPN()+1)+" At X "+player[i].getPX()+ " and Y : "+player[i].getPY());
                 
@@ -97,16 +119,20 @@ public class Game {
 					player[i].moveOriginal();
 				} 
                 
-                //At the end of each turn generate HTML Map
-                generateHTMLMap(player[i], n, map);
-                
 			}
+            
+            for (i = 0; i < players; i++){
+                //At the end of all player's turn generate HTML Map
+                generateHTMLMap(player[i], n, map);
+            }
+            
 		}
 
 	}
     
 	//This should also check if the player is being set on a grass tile or not
-	public void setNumPlayers(int players,int n,GeneralMap map){
+	public void setNumPlayers(int players,int n,GeneralMap map, int no_of_teams){
+
 		player = new Player[players];
 		for(int i = 0 ; i < players;i++){
 			int x1 = rand.nextInt(n) + 0;
@@ -124,10 +150,25 @@ public class Game {
 			//Create if player is spawned on a grass tile
 			player[i] = new Player(i,x1,y1);
             
-            player[i].uncovered.add( map.getTile(player[i].getPX(), player[i].getPY()));
-            
-            generateHTMLMap(player[i], n, map);
+            //team_uncovered[player[i].team_number].attach(player[i]);
+            player[i].observer_state.add( map.getTile(player[i].getPX(), player[i].getPY()));
+            //set team numbers
+            if (no_of_teams != 0){
+                player[i].set_team(no_of_teams);
+                team_uncovered[player[i].team_number-1].attach(player[i]);
+                player[i].score.set_state(map.getTile(player[i].getPX(), player[i].getPY()));
+            }
+
 		}
+        
+        for (int i = 0; i < players; i++){
+            if(no_of_teams != 0){
+                //Update all team member's uncovered list to include latest addition
+                //update_team(player[i].team_number, player, team_uncovered[player[i].team_number-1]);
+            }
+            //At the end of all player's turn generate HTML Map
+            generateHTMLMap(player[i], n, map);
+        }
 	}
 
     
@@ -171,8 +212,8 @@ public class Game {
                 boolean uncovered_bool = false;
                 
                 //if tile is found in player's uncovered list, set to true
-                for(int k = 0; k < player.uncovered.size(); k++){
-                    if((player.uncovered).contains(map.getTile(i,j))){
+                for(int k = 0; k < player.observer_state.size(); k++){
+                    if((player.observer_state).contains(map.getTile(i,j))){
                         uncovered_bool = true;
                     }
                 }
