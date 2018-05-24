@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="com.uom.game.MapTest" time="0.003" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="com.uom.game.MapTest" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="9.0.4+11"/>
@@ -64,9 +64,9 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="com.uom.game.MapTest" name="testMapTypeSafe" time="0"/>
-  <testcase classname="com.uom.game.MapTest" name="testGrassTileHazard" time="0.001"/>
-  <testcase classname="com.uom.game.MapTest" name="testAmountReturnHazard" time="0"/>
-  <testcase classname="com.uom.game.MapTest" name="testWinTileHazard" time="0.001"/>
+  <testcase classname="com.uom.game.MapTest" name="testGrassTileHazard" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testAmountReturnHazard" time="0.001"/>
+  <testcase classname="com.uom.game.MapTest" name="testWinTileHazard" time="0"/>
   <testcase classname="com.uom.game.MapTest" name="testWaterTileSafe" time="0"/>
   <testcase classname="com.uom.game.MapTest" name="testWaterTileHazard" time="0.001"/>
   <testcase classname="com.uom.game.MapTest" name="testAmountReturnSafe" time="0"/>

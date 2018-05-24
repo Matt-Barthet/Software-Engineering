@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- EMMA v2.1.5320 (stable) report, generated Thu May 24 19:27:22 CEST 2018 -->
+<?xml version="1.0" encoding="UTF-8"?><!-- EMMA v2.1.5320 (stable) report, generated Thu May 24 22:50:43 CEST 2018 -->
 
 <report>
   <stats>
     <packages value="1"/>
     <classes value="16"/>
-    <methods value="67"/>
+    <methods value="68"/>
     <srcfiles value="16"/>
-    <srclines value="370"/>
+    <srclines value="377"/>
   </stats>
   <data>
     <all name="all classes">
       <coverage type="class, %" value="88%  (14/16)"/>
-      <coverage type="method, %" value="75%  (50/67)"/>
-      <coverage type="block, %" value="55%  (958/1742)"/>
-      <coverage type="line, %" value="56%  (206.8/370)"/>
+      <coverage type="method, %" value="84%  (57/68)"/>
+      <coverage type="block, %" value="62%  (1118/1811)"/>
+      <coverage type="line, %" value="61%  (231.1/377)"/>
 
       <package name="com.uom.game">
         <coverage type="class, %" value="88%  (14/16)"/>
-        <coverage type="method, %" value="75%  (50/67)"/>
-        <coverage type="block, %" value="55%  (958/1742)"/>
-        <coverage type="line, %" value="56%  (206.8/370)"/>
+        <coverage type="method, %" value="84%  (57/68)"/>
+        <coverage type="block, %" value="62%  (1118/1811)"/>
+        <coverage type="line, %" value="61%  (231.1/377)"/>
 
         <srcfile name="Main.java">
           <coverage type="class, %" value="0%   (0/1)"/>
@@ -118,129 +118,22 @@
             </method>
           </class>
         </srcfile>
-        <srcfile name="Score_Subject.java">
-          <coverage type="class, %" value="100% (1/1)"/>
-          <coverage type="method, %" value="20%  (1/5)"/>
-          <coverage type="block, %" value="27%  (13/49)"/>
-          <coverage type="line, %" value="23%  (3/13)"/>
-
-          <class name="Score_Subject">
-            <coverage type="class, %" value="100% (1/1)"/>
-            <coverage type="method, %" value="20%  (1/5)"/>
-            <coverage type="block, %" value="27%  (13/49)"/>
-            <coverage type="line, %" value="23%  (3/13)"/>
-
-            <method name="attach (Observer_Class): void">
-              <coverage type="method, %" value="0%   (0/1)"/>
-              <coverage type="block, %" value="0%   (0/9)"/>
-              <coverage type="line, %" value="0%   (0/3)"/>
-            </method>
-            <method name="get_state (): List">
-              <coverage type="method, %" value="0%   (0/1)"/>
-              <coverage type="block, %" value="0%   (0/3)"/>
-              <coverage type="line, %" value="0%   (0/1)"/>
-            </method>
-            <method name="notify_players (): void">
-              <coverage type="method, %" value="0%   (0/1)"/>
-              <coverage type="block, %" value="0%   (0/16)"/>
-              <coverage type="line, %" value="0%   (0/3)"/>
-            </method>
-            <method name="set_state (Tile): void">
-              <coverage type="method, %" value="0%   (0/1)"/>
-              <coverage type="block, %" value="0%   (0/8)"/>
-              <coverage type="line, %" value="0%   (0/3)"/>
-            </method>
-            <method name="Score_Subject (): void">
-              <coverage type="method, %" value="100% (1/1)"/>
-              <coverage type="block, %" value="100% (13/13)"/>
-              <coverage type="line, %" value="100% (3/3)"/>
-            </method>
-          </class>
-        </srcfile>
-        <srcfile name="Observer_Class.java">
-          <coverage type="class, %" value="100% (1/1)"/>
-          <coverage type="method, %" value="50%  (1/2)"/>
-          <coverage type="block, %" value="57%  (8/14)"/>
-          <coverage type="line, %" value="50%  (2/4)"/>
-
-          <class name="Observer_Class">
-            <coverage type="class, %" value="100% (1/1)"/>
-            <coverage type="method, %" value="50%  (1/2)"/>
-            <coverage type="block, %" value="57%  (8/14)"/>
-            <coverage type="line, %" value="50%  (2/4)"/>
-
-            <method name="update (): void">
-              <coverage type="method, %" value="0%   (0/1)"/>
-              <coverage type="block, %" value="0%   (0/6)"/>
-              <coverage type="line, %" value="0%   (0/2)"/>
-            </method>
-            <method name="Observer_Class (): void">
-              <coverage type="method, %" value="100% (1/1)"/>
-              <coverage type="block, %" value="100% (8/8)"/>
-              <coverage type="line, %" value="100% (2/2)"/>
-            </method>
-          </class>
-        </srcfile>
-        <srcfile name="Game.java">
-          <coverage type="class, %" value="100% (1/1)"/>
-          <coverage type="method, %" value="80%  (4/5)"/>
-          <coverage type="block, %" value="62%  (439/710)"/>
-          <coverage type="line, %" value="67%  (76.8/114)"/>
-
-          <class name="Game">
-            <coverage type="class, %" value="100% (1/1)"/>
-            <coverage type="method, %" value="80%  (4/5)"/>
-            <coverage type="block, %" value="62%  (439/710)"/>
-            <coverage type="line, %" value="67%  (76.8/114)"/>
-
-            <method name="Game (int, int, int, int): void">
-              <coverage type="method, %" value="0%   (0/1)"/>
-              <coverage type="block, %" value="0%   (0/91)"/>
-              <coverage type="line, %" value="0%   (0/19)"/>
-            </method>
-            <method name="winGame (int, Player [], GeneralMap, int): boolean">
-              <coverage type="method, %" value="100% (1/1)"/>
-              <coverage type="block, %" value="25%  (39/154)"/>
-              <coverage type="line, %" value="29%  (5.8/20)"/>
-            </method>
-            <method name="setNumPlayers (int, int, GeneralMap, int): void">
-              <coverage type="method, %" value="100% (1/1)"/>
-              <coverage type="block, %" value="72%  (100/139)"/>
-              <coverage type="line, %" value="83%  (15/18)"/>
-            </method>
-            <method name="generateHTMLMap (Player, int, GeneralMap): void">
-              <coverage type="method, %" value="100% (1/1)"/>
-              <coverage type="block, %" value="90%  (242/268)"/>
-              <coverage type="line, %" value="94%  (48/51)"/>
-            </method>
-            <method name="Game (int, GeneralMap): void">
-              <coverage type="method, %" value="100% (1/1)"/>
-              <coverage type="block, %" value="100% (58/58)"/>
-              <coverage type="line, %" value="100% (9/9)"/>
-            </method>
-          </class>
-        </srcfile>
         <srcfile name="Player.java">
           <coverage type="class, %" value="100% (1/1)"/>
-          <coverage type="method, %" value="80%  (8/10)"/>
-          <coverage type="block, %" value="64%  (141/220)"/>
-          <coverage type="line, %" value="67%  (34/51)"/>
+          <coverage type="method, %" value="90%  (9/10)"/>
+          <coverage type="block, %" value="68%  (146/215)"/>
+          <coverage type="line, %" value="70%  (35/50)"/>
 
           <class name="Player">
             <coverage type="class, %" value="100% (1/1)"/>
-            <coverage type="method, %" value="80%  (8/10)"/>
-            <coverage type="block, %" value="64%  (141/220)"/>
-            <coverage type="line, %" value="67%  (34/51)"/>
+            <coverage type="method, %" value="90%  (9/10)"/>
+            <coverage type="block, %" value="68%  (146/215)"/>
+            <coverage type="line, %" value="70%  (35/50)"/>
 
             <method name="moveOriginal (): void">
               <coverage type="method, %" value="0%   (0/1)"/>
               <coverage type="block, %" value="0%   (0/9)"/>
               <coverage type="line, %" value="0%   (0/3)"/>
-            </method>
-            <method name="set_team (int): void">
-              <coverage type="method, %" value="0%   (0/1)"/>
-              <coverage type="block, %" value="0%   (0/10)"/>
-              <coverage type="line, %" value="0%   (0/2)"/>
             </method>
             <method name="move (Player, char, int, GeneralMap): void">
               <coverage type="method, %" value="100% (1/1)"/>
@@ -249,8 +142,8 @@
             </method>
             <method name="Player (int, int, int): void">
               <coverage type="method, %" value="100% (1/1)"/>
-              <coverage type="block, %" value="100% (26/26)"/>
-              <coverage type="line, %" value="100% (9/9)"/>
+              <coverage type="block, %" value="100% (21/21)"/>
+              <coverage type="line, %" value="100% (8/8)"/>
             </method>
             <method name="getPN (): int">
               <coverage type="method, %" value="100% (1/1)"/>
@@ -281,6 +174,55 @@
               <coverage type="method, %" value="100% (1/1)"/>
               <coverage type="block, %" value="100% (7/7)"/>
               <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="set_team (int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (10/10)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="Game.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="83%  (5/6)"/>
+          <coverage type="block, %" value="70%  (552/784)"/>
+          <coverage type="line, %" value="72%  (88.1/122)"/>
+
+          <class name="Game">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="83%  (5/6)"/>
+            <coverage type="block, %" value="70%  (552/784)"/>
+            <coverage type="line, %" value="72%  (88.1/122)"/>
+
+            <method name="Game (int, int, int, int): void">
+              <coverage type="method, %" value="0%   (0/1)"/>
+              <coverage type="block, %" value="0%   (0/91)"/>
+              <coverage type="line, %" value="0%   (0/19)"/>
+            </method>
+            <method name="winGame (int, Player [], GeneralMap, int): boolean">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="25%  (39/154)"/>
+              <coverage type="line, %" value="29%  (5.8/20)"/>
+            </method>
+            <method name="generateHTMLMap (Player, int, GeneralMap): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="90%  (242/268)"/>
+              <coverage type="line, %" value="94%  (48/51)"/>
+            </method>
+            <method name="Game (int, GeneralMap): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (58/58)"/>
+              <coverage type="line, %" value="100% (9/9)"/>
+            </method>
+            <method name="Game (int, GeneralMap, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (76/76)"/>
+              <coverage type="line, %" value="100% (12/12)"/>
+            </method>
+            <method name="setNumPlayers (int, int, GeneralMap, int): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (137/137)"/>
+              <coverage type="line, %" value="100% (17/17)"/>
             </method>
           </class>
         </srcfile>
@@ -510,6 +452,69 @@
               <coverage type="method, %" value="100% (1/1)"/>
               <coverage type="block, %" value="100% (4/4)"/>
               <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="Observer_Class.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="100% (2/2)"/>
+          <coverage type="block, %" value="100% (14/14)"/>
+          <coverage type="line, %" value="100% (4/4)"/>
+
+          <class name="Observer_Class">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (2/2)"/>
+            <coverage type="block, %" value="100% (14/14)"/>
+            <coverage type="line, %" value="100% (4/4)"/>
+
+            <method name="Observer_Class (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (8/8)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+            <method name="update (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (6/6)"/>
+              <coverage type="line, %" value="100% (2/2)"/>
+            </method>
+          </class>
+        </srcfile>
+        <srcfile name="Score_Subject.java">
+          <coverage type="class, %" value="100% (1/1)"/>
+          <coverage type="method, %" value="100% (5/5)"/>
+          <coverage type="block, %" value="100% (49/49)"/>
+          <coverage type="line, %" value="100% (13/13)"/>
+
+          <class name="Score_Subject">
+            <coverage type="class, %" value="100% (1/1)"/>
+            <coverage type="method, %" value="100% (5/5)"/>
+            <coverage type="block, %" value="100% (49/49)"/>
+            <coverage type="line, %" value="100% (13/13)"/>
+
+            <method name="Score_Subject (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (13/13)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+            <method name="attach (Observer_Class): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (9/9)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+            <method name="get_state (): List">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (3/3)"/>
+              <coverage type="line, %" value="100% (1/1)"/>
+            </method>
+            <method name="notify_players (): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (16/16)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
+            </method>
+            <method name="set_state (Tile): void">
+              <coverage type="method, %" value="100% (1/1)"/>
+              <coverage type="block, %" value="100% (8/8)"/>
+              <coverage type="line, %" value="100% (3/3)"/>
             </method>
           </class>
         </srcfile>

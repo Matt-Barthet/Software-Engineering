@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.nio.file.*;
 import java.nio.charset.*;
+import java.util.Arrays;
 
 public class GameTest  {
 	private Player player;
@@ -211,5 +212,31 @@ public class GameTest  {
         assertTrue(game.player[0].observer_state.size() == 2);
         
     }
+    
+    @Test
+    public void testTeamObservation(){
+        int tiles = 14;
+		int players = 4;
+		int type = 1;
+        int no_of_teams = 2;
+        
+        HazardMap map_2 = HazardMap.getInstance();
+		map_engineer = new MapEngineer(map_2);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
+        
+        Game game = new Game(players, map, no_of_teams);
+        
+        boolean correct = false;
+        
+        //Checks if the player's uncovered states corresponds to the team's
+        if(game.player[0].observer_state.equals( game.team_uncovered[game.player[0].team_number-1].get_state())){
+            correct = true;
+        }
+        
+        assertTrue(correct == true);
+    }
+    
+    
 
 }

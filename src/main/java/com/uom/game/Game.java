@@ -48,18 +48,27 @@ public class Game {
         winGame(players,player,map, n);
 
     }
-	/*public Game(int players,int n,int map_type, int no_of_teams){
+	    //constructor to create game for testing purposes
+    public Game(int players, GeneralMap map, int no_of_teams){
+        //map_engineer.constructMap(n,map_type);
         team_uncovered = new Score_Subject [no_of_teams];
         for(int i = 0; i < no_of_teams; i++){
             team_uncovered[i] = new Score_Subject();
         }
         
-		Map map = new Map(n,map_type);
-		setNumPlayers(players,n,map, no_of_teams);
+        //set number of players accordingly
+        setNumPlayers(players, map.returnTileAmount(), map, 2);
+        
+        //place player 1 straight onto winning tile for testing purposes
+        player[0].setPXPY(map.winning_x, map.winning_y);
+        player[0].observer_state.add( map.getTile(map.winning_x, map.winning_y));
+        
+        
+        //store whether the game completed successfully here
+        game_won = winGame(players, player, map, map.returnTileAmount());
+    }
+        
 
-		winGame(players,player,map, n);
-	}
-    */
     //constructor to create game for testing purposes
     public Game(int players, GeneralMap map){
         //set number of players accordingly
@@ -162,10 +171,6 @@ public class Game {
 		}
         
         for (int i = 0; i < players; i++){
-            if(no_of_teams != 0){
-                //Update all team member's uncovered list to include latest addition
-                //update_team(player[i].team_number, player, team_uncovered[player[i].team_number-1]);
-            }
             //At the end of all player's turn generate HTML Map
             generateHTMLMap(player[i], n, map);
         }

@@ -7,8 +7,7 @@ import java.lang.Math;
 public class Player extends Observer_Class{
 	private int x ,y ,n;
 	private int temp_x , temp_y;
-    int team_number = 0;
-    public List<Tile> uncovered = new ArrayList<Tile>();
+    public int team_number = 0;
     
 	//Player constructor sets the number of the player and his position
 	public Player(int n,int x,int y){
