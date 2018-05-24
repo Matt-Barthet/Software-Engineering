@@ -82,7 +82,7 @@ public class GameTest extends TestCase {
         
         //check if the uncovered length is equal to two as player was moved
         //twice in the test case created in the previous test
-        assertTrue(game.player[0].uncovered.size() == 2);
+        assertTrue(game.player[0].observer_state.size() == 2);
         
     }
     

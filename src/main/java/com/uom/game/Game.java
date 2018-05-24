@@ -11,7 +11,9 @@ public class Game {
 	public Player player[];
     public boolean game_won;
     
-    public List<Tile> team_uncovered [];
+    public Score_Subject team_uncovered [];
+    
+    public Abstract_Subject score = new Score_Subject();
     
 	Scanner reader = new Scanner(System.in);
 	Random rand  = new Random();
@@ -19,9 +21,9 @@ public class Game {
 	//This will create the map and the html table
     
 	public Game(int players,int n,int map_type, int no_of_teams){
-        team_uncovered = new ArrayList [no_of_teams];
+        team_uncovered = new Score_Subject [no_of_teams];
         for(int i = 0; i < no_of_teams; i++){
-            team_uncovered[i] = new ArrayList<Tile>();
+            team_uncovered[i] = new Score_Subject();
         }
         
 		Map map = new Map(n,map_type);
@@ -37,8 +39,7 @@ public class Game {
         
         //place player 1 straight onto winning tile for testing purposes
         player[0].setPXPY(map.winning_x, map.winning_y);
-        
-        player[0].uncovered.add( map.getTile(map.winning_x, map.winning_y));
+        player[0].observer_state.add( map.getTile(map.winning_x, map.winning_y));
         
         
         //store whether the game completed successfully here
@@ -76,14 +77,11 @@ public class Game {
                 //move player
 				player[i].move(player[i],directions[i],map.returnTileAmount(), map);
                 
-                //Add uncovered to player's uncovered list
-                player[i].uncovered.add( map.getTile(player[i].getPX(), player[i].getPY()));
-                
                 //Add current discovery to team list
                 if(player[i].team_number != 0){
-                    team_uncovered[player[i].team_number-1].add(map.getTile(player[i].getPX(), player[i].getPY()));
+                    team_uncovered[player[i].team_number-1].set_state(map.getTile(player[i].getPX(), player[i].getPY()));
                     //Update all team member's uncovered list to include latest addition
-                    update_team(player[i].team_number, player, team_uncovered[player[i].team_number-1]);
+                    //update_team(player[i].team_number, player, team_uncovered[player[i].team_number-1]);
                 }
                 
 				//System.out.println("Player , "+(player[i].getPN()+1)+" At X "+player[i].getPX()+ " and Y : "+player[i].getPY());
@@ -104,17 +102,6 @@ public class Game {
 
 	}
     
-    //function to notify all team members a new tile was discovered
-    public void update_team(int team_number, Player player [], List<Tile> uncovered){
-        
-        for (int i = 0; i < player.length; i++){
-            if(player[i].team_number == team_number){
-                player[i].uncovered = uncovered;
-            }
-        }
-        
-    }
-    
 	//This should also check if the player is being set on a grass tile or not
 	public void setNumPlayers(int players,int n,Map map, int no_of_teams){
 		player = new Player[players];
@@ -133,15 +120,14 @@ public class Game {
 
 			//Create if player is spawned on a grass tile
 			player[i] = new Player(i,x1,y1);
+            
+            //team_uncovered[player[i].team_number].attach(player[i]);
+            player[i].observer_state.add( map.getTile(player[i].getPX(), player[i].getPY()));
             //set team numbers
             if (no_of_teams != 0){
                 player[i].set_team(no_of_teams);
-            }
-            player[i].uncovered.add( map.getTile(player[i].getPX(), player[i].getPY()));
-            
-            //Add current discovery to team list
-            if(player[i].team_number != 0){
-                team_uncovered[player[i].team_number-1].add(map.getTile(player[i].getPX(), player[i].getPY()));
+                team_uncovered[player[i].team_number-1].attach(player[i]);
+                player[i].score.set_state(map.getTile(player[i].getPX(), player[i].getPY()));
             }
 
 		}
@@ -149,7 +135,7 @@ public class Game {
         for (int i = 0; i < players; i++){
             if(no_of_teams != 0){
                 //Update all team member's uncovered list to include latest addition
-                update_team(player[i].team_number, player, team_uncovered[player[i].team_number-1]);
+                //update_team(player[i].team_number, player, team_uncovered[player[i].team_number-1]);
             }
             //At the end of all player's turn generate HTML Map
             generateHTMLMap(player[i], n, map);
@@ -197,8 +183,8 @@ public class Game {
                 boolean uncovered_bool = false;
                 
                 //if tile is found in player's uncovered list, set to true
-                for(int k = 0; k < player.uncovered.size(); k++){
-                    if((player.uncovered).contains(map.getTile(i,j))){
+                for(int k = 0; k < player.observer_state.size(); k++){
+                    if((player.observer_state).contains(map.getTile(i,j))){
                         uncovered_bool = true;
                     }
                 }
