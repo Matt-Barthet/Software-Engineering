@@ -4,14 +4,15 @@ Testing feature on sourcetree
 ToDo:
 Exceptions
 Testing Failure Cases
-Make Sure Encapsulation is Good
-
+Testign Observer design pattern
 
 INPROGRESS:
-SingleTon Unit Tests in progress
-Builder Unit Tests in progress
+Observer design pattern
 
 DONE:
+SingleTon Unit Tests in progress
+Builder Unit Tests in progress
+Make Sure Encapsulation is Good
 SingleTon Map Done
 Use Appropriate Design Patterns
 Hazard Map

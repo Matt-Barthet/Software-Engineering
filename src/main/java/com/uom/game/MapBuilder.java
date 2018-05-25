@@ -1,5 +1,6 @@
 package com.uom.game;
 
+//Map Builder Blue print
 interface MapBuilder{
 	public void MapGeneration();
 	

@@ -13,11 +13,10 @@ public class GeneralMap implements MapPlan{
 	private WinningTile win;
 	public Tile[][] tile;
     public int winning_x, winning_y;
-	
 	private GeneralMap generalmap;
 	
 	Random rand  = new Random();
-	
+	//General map setter
 	public GeneralMap(){
 		this.generalmap = generalmap;
 	}
@@ -45,7 +44,8 @@ public class GeneralMap implements MapPlan{
 	public Tile getTile(int x ,int y){
 		return tile[x][y];
 	}
-	public void createMap(){
+	//Creating the map
+	public void createMap() throws RuntimeException{
 		double temp_percent =0.0;
 		if(map_type == 1 ){
 			temp_percent = 0.10;
@@ -57,6 +57,8 @@ public class GeneralMap implements MapPlan{
 			}else{
 				temp_percent = 0.35;
 			}	
+		}else{
+			throw new RuntimeException("Invalid Input please Choose 1 : Safe or 2 : Hazard");
 		}
 		
 		//Create the tiles and set them 

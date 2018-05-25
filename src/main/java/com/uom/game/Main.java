@@ -72,13 +72,15 @@ public class Main {
 				else{
 					accept = false;
 					System.out.println("Map too small for amount of players");
+                    continue;
 				}
 			}else{
 				System.out.println("Failed inputs try again");
-			}
+			    continue;
+            }
 		
 		}
-        
+        //Once accepted the new game can be created
         if (accept){
             Game g = new Game(players,map_size,map_type, no_of_teams);
         }

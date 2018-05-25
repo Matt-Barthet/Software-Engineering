@@ -21,7 +21,7 @@ public class Game {
 	//Has passing parameters for the game no of players and board size
 	//This will create the map and the html table
     
-	public Game(int players,int n,int map_type, int no_of_teams){
+	public Game(int players,int n,int map_type, int no_of_teams) throws RuntimeException{
 		//MapBuilder safebuilder =  SafeMap.getInstance();
 		//MapEngineer map_engineer = new MapEngineer(safebuilder);
 		
@@ -41,7 +41,7 @@ public class Game {
 			map_engineer = new MapEngineer(map_2);
 			map_engineer.constructMap(n,map_type);
 		}else{
-			//Error
+			throw new RuntimeException("Invalid Input please Choose 1 : Safe or 2 : Hazard");
 		}
 		map = map_engineer.getMap();
 		setNumPlayers(players,n,map, no_of_teams);
@@ -154,7 +154,6 @@ public class Game {
 						y1 = rand.nextInt(n) + 0;
 				}
 			}
-			//System.out.println("x :"+x1+" y : "+y1);
 
 			//Create if player is spawned on a grass tile
 			player[i] = new Player(i,x1,y1);

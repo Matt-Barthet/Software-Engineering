@@ -1,5 +1,6 @@
 package com.uom.game;
 
+//Map Plan Blue print
 interface MapPlan{
 	public void setTiles(int tile_no);
 	
