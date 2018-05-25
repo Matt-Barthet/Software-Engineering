@@ -7,9 +7,7 @@ public class SafeMap implements MapBuilder{
 	private int tile_no;
 	private int map_type;
 	
-	public SafeMap() throws RuntimeException{
-		throw new RuntimeException("Can't Call Private Constructor");
-	}
+	public SafeMap() throws RuntimeException{}
 	
 	public void MapGeneration(){
 		this.generalmap = new GeneralMap();

@@ -7,9 +7,7 @@ public class HazardMap implements MapBuilder{
 	private int tile_no;
 	private int map_type;
 	//Private Hazard Map so that multiple ones can't be created SINGLETON purpose
-	private HazardMap() throws RuntimeException{
-		throw new RuntimeException("Can't Call Private Constructor");
-	}
+	private HazardMap() {}
 	//Generates Map
 	public void MapGeneration(){
 		this.generalmap = new GeneralMap();
