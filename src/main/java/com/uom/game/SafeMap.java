@@ -7,7 +7,7 @@ public class SafeMap implements MapBuilder{
 	private int tile_no;
 	private int map_type;
 	
-	public SafeMap() throws RuntimeException{}
+	private SafeMap(){}
 	
 	public void MapGeneration(){
 		this.generalmap = new GeneralMap();
