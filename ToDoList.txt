@@ -2,11 +2,21 @@ The more unit tests test the code the more it is covered with emma so unit tests
 Testing feature on sourcetree
 
 ToDo:
+Exceptions
+Testing Failure Cases
+Testign Observer design pattern
 
 INPROGRESS:
-Add unit tests for features
+Observer design pattern
 
 DONE:
+SingleTon Unit Tests in progress
+Builder Unit Tests in progress
+Make Sure Encapsulation is Good
+SingleTon Map Done
+Use Appropriate Design Patterns
+Hazard Map
+Add unit tests for features
 Player movement
 Win Condition
 Map
@@ -19,3 +29,6 @@ turns are after each other (change to waiting for all players to do a turn)
 Main game loop
 Game Init
 Improve UI of the HTML Map
+
+mvn clean package
+java -cp target/game-1.0-SNAPSHOT-jar-with-dependencies.jar com.uom.game.Main

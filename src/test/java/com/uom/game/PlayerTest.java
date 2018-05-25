@@ -1,20 +1,39 @@
 package com.uom.game;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.framework.*;
+import org.junit.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public class PlayerTest extends TestCase {
+public class PlayerTest {
 	protected Player player;
-	private Map map;
+	private GeneralMap map;
+	private SafeMap map_1;
+	private HazardMap map_2;
+	private MapEngineer map_engineer;
 	
-	//Setting up the player
-	protected void setup(){
-		player = new Player(1,2,3);
+	//Done to test Singleton map
+	@Before
+    public void resetSingleton() throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+       Field map = Map.class.getDeclaredField("instance");
+       map.setAccessible(true);
+       map.set(null, null);
+    }
+	//Setup
+	public void setup(){
+		int tiles = 14;
+		int players = 4;
+		int type = 1;
+		//Testing with a Safe Map Instance
+		SafeMap map_1 = SafeMap.getInstance();
+		map_engineer = new MapEngineer(map_1);
+		map_engineer.constructMap(tiles,type);
+        map = map_engineer.getMap();
 	}
-	
 	//Testing returns 
+	@Test
 	public void testGetX(){
 		player = new Player(1,2,3);
 		int ans = player.getPX();
@@ -22,8 +41,9 @@ public class PlayerTest extends TestCase {
 		
 		assertTrue(expected == ans);
 	}
-
+	
 	//Testing returns 
+	@Test
 	public void testGetY(){
 		player = new Player(1,2,3);
 		int ans = player.getPY();
@@ -33,8 +53,9 @@ public class PlayerTest extends TestCase {
 	}
 	
 	//Testing movement up
+	@Test
 	public void testMoveUp(){
-		map = new Map(5);
+		setup();
 		player = new Player(1,2,3);
 		player.move(player,'u',5,map);
 		int ansx = player.getPX();
@@ -43,10 +64,11 @@ public class PlayerTest extends TestCase {
 		assertTrue(expectedx == ansx);
 	
 	}
-	
+
 	//Testing movement down
+	@Test
 	public void testMoveDown(){
-		map = new Map(5);
+		setup();
 		player = new Player(1,2,3);
 		player.move(player,'d',5,map);
 		int ansx = player.getPX();
@@ -57,8 +79,9 @@ public class PlayerTest extends TestCase {
 	}
 	
 	//Testing movement left
+	@Test
 	public void testMoveLeft(){
-		map = new Map(5);
+		setup();
 		player = new Player(1,2,3);
 		player.move(player,'l',5,map);
 		int ansx = player.getPY();
@@ -69,8 +92,9 @@ public class PlayerTest extends TestCase {
 	}
 	
 	//Testing movement right
+	@Test
 	public void testMoveRight(){
-		map = new Map(5);
+		setup();
 		player = new Player(1,2,3);
 		player.move(player,'r',5,map);
 		int ansx = player.getPY();
@@ -81,8 +105,9 @@ public class PlayerTest extends TestCase {
 	}
 	
 	//Testing movement Failure
+	@Test
 	public void testMoveFail(){
-		map = new Map(5);
+		setup();
 		player = new Player(1,2,3);
 		player.move(player,'a',5,map);
 		int ansy = player.getPY();
@@ -94,8 +119,9 @@ public class PlayerTest extends TestCase {
 	}
 	
 	//Testing returning starting positions after a player has moved
+	@Test
 	public void testStartPos(){
-		map = new Map(5);
+		setup();
 		player = new Player(1,2,3);
 		
 		player.move(player,'u',5,map);
@@ -118,4 +144,4 @@ public class PlayerTest extends TestCase {
 		assertTrue(expectedsty == starty);
 	}
 
-}
+}	

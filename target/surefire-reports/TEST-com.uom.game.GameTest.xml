@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="com.uom.game.GameTest" time="0.175" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="com.uom.game.GameTest" time="0.165" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="9.0.4+11"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home/lib"/>
     <property name="gopherProxySet" value="false"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/Matthew/OneDrive/Software-Engineering"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/Matthew/OneDrive/University &amp; Work/Computing Science/Year 2/Semester 2/CPS 2002 - Software Engineering/Software-Engineering"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="MT"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="user.dir" value="/Users/Matthew/OneDrive/Software-Engineering"/>
+    <property name="user.dir" value="/Users/Matthew/OneDrive/University &amp; Work/Computing Science/Year 2/Semester 2/CPS 2002 - Software Engineering/Software-Engineering"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.runtime.version" value="9.0.4+11"/>
@@ -63,8 +63,13 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.uom.game.GameTest" name="testPlayerAmount" time="0.151"/>
-  <testcase classname="com.uom.game.GameTest" name="testHTMLGenerator" time="0.012"/>
-  <testcase classname="com.uom.game.GameTest" name="testWinCondition" time="0.007"/>
-  <testcase classname="com.uom.game.GameTest" name="testUncover" time="0.005"/>
+  <testcase classname="com.uom.game.GameTest" name="testHTMLGeneratorHazard" time="0.123"/>
+  <testcase classname="com.uom.game.GameTest" name="testUncoverHazard" time="0.008"/>
+  <testcase classname="com.uom.game.GameTest" name="testWinConditionHazard" time="0.005"/>
+  <testcase classname="com.uom.game.GameTest" name="testTeamObservation" time="0.005"/>
+  <testcase classname="com.uom.game.GameTest" name="testHTMLGeneratorSafe" time="0.005"/>
+  <testcase classname="com.uom.game.GameTest" name="testWinConditionSafe" time="0.004"/>
+  <testcase classname="com.uom.game.GameTest" name="testPlayerAmountHazard" time="0.004"/>
+  <testcase classname="com.uom.game.GameTest" name="testPlayerAmountSafe" time="0.006"/>
+  <testcase classname="com.uom.game.GameTest" name="testUncoverSafe" time="0.005"/>
 </testsuite>

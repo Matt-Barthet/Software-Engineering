@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="com.uom.game.MapTest" time="0" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="com.uom.game.MapTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="9.0.4+11"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home/lib"/>
     <property name="gopherProxySet" value="false"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/Matthew/OneDrive/Software-Engineering"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/Matthew/OneDrive/University &amp; Work/Computing Science/Year 2/Semester 2/CPS 2002 - Software Engineering/Software-Engineering"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=":"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="MT"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="user.dir" value="/Users/Matthew/OneDrive/Software-Engineering"/>
+    <property name="user.dir" value="/Users/Matthew/OneDrive/University &amp; Work/Computing Science/Year 2/Semester 2/CPS 2002 - Software Engineering/Software-Engineering"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="java.runtime.version" value="9.0.4+11"/>
@@ -63,8 +63,14 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.uom.game.MapTest" name="testAmountReturn" time="0"/>
-  <testcase classname="com.uom.game.MapTest" name="testWaterTile" time="0"/>
-  <testcase classname="com.uom.game.MapTest" name="testGrassTile" time="0"/>
-  <testcase classname="com.uom.game.MapTest" name="testWinTile" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testMapTypeSafe" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testGrassTileHazard" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testAmountReturnHazard" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testWinTileHazard" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testWaterTileSafe" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testWaterTileHazard" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testAmountReturnSafe" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testMapTypeHazard" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testGrassTileSafe" time="0"/>
+  <testcase classname="com.uom.game.MapTest" name="testWinTileSafe" time="0"/>
 </testsuite>
